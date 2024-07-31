@@ -1,0 +1,35 @@
+# Ignora i file di build di CMake
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignora i file di output di build e directory temporanee
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+*.log
+
+# Ignora i file temporanei di macOS
+.DS_Store
+
+# Ignora le configurazioni di IDE specifiche per macOS
+*.xcuserstate
+*.xcworkspace
+*.xcscheme
+
+# Ignora i file di configurazione di Visual Studio Code
+.vscode/
+
+# Ignora i file generati da strumenti di analisi
+*.clangd
+*.clang-format
+
+# Ignora i file temporanei di editor di testo
+*~ 
+*.swp
+*.swo
