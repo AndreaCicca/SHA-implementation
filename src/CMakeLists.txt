@@ -1,0 +1,39 @@
+cmake_minimum_required(VERSION 3.28)
+
+# Nome del progetto
+project(cripto_project)
+
+# Impostazione della versione dello standard C++
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Includi la cartella headers per cercare i file di intestazione
+include_directories(lib-hash/headers)
+include_directories(lib-log/headers)
+
+file(GLOB LIB_SOURCES "lib-hash/*.cc")
+file(GLOB LIB_LOG_SOURCES "lib-log/*.cc")
+
+# Aggiungi librerie
+add_library(hashlib ${LIB_SOURCES})
+add_library(logging-lib ${LIB_LOG_SOURCES})
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}")
+
+# Trova Boost
+find_package(Boost)
+
+# Aggiungi l'eseguibile principale
+add_executable(${PROJECT_NAME} main.cc)
+
+# Linka la librerie
+
+target_link_libraries(logging-lib PRIVATE 
+    boost::boost
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    hashlib
+    logging-lib
+)
