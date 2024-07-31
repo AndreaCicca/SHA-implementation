@@ -29,3 +29,19 @@ void init_logging() {
 void log_info(const std::string &message) {
   BOOST_LOG_TRIVIAL(info) << message;
 }
+
+void log_error(const std::string &message) {
+  BOOST_LOG_TRIVIAL(error) << message;
+}
+
+void log_warning(const std::string &message) {
+  BOOST_LOG_TRIVIAL(warning) << message;
+}
+
+void log_debug(const std::string &message) {
+  BOOST_LOG_TRIVIAL(debug) << message;
+}
+
+void log_fatal(const std::string &message) {
+  BOOST_LOG_TRIVIAL(fatal) << message;
+}
