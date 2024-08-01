@@ -2,7 +2,8 @@
 #include "logging.hh"
 
 int main() {
-  init_logging();
-  log_info("Questo è un messaggio di log a livello info");
+  cripto::init_logging();
+  cripto::log_info("Questo è un messaggio di log a livello info");
+  cripto::test_hash();
   return 0;
 }

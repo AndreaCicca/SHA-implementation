@@ -8,6 +8,8 @@
 namespace logging = boost::log;
 namespace keywords = boost::log::keywords;
 
+namespace cripto {
+
 void init_logging() {
   logging::register_simple_formatter_factory<logging::trivial::severity_level,
                                              char>("Severity");
@@ -45,3 +47,5 @@ void log_debug(const std::string &message) {
 void log_fatal(const std::string &message) {
   BOOST_LOG_TRIVIAL(fatal) << message;
 }
+
+} // namespace cripto
