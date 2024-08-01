@@ -18,9 +18,6 @@ file(GLOB LIB_LOG_SOURCES "lib-log/*.cc")
 add_library(hashlib ${LIB_SOURCES})
 add_library(logging-lib ${LIB_LOG_SOURCES})
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}")
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}")
-
 # Trova Boost
 find_package(Boost)
 
