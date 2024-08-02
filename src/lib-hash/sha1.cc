@@ -91,6 +91,7 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   // ^ = XOR -> OR esclusivo
   // & = AND
   // | = OR
+  // ~ = NOT 1 -> 0, 0 -> 1
 
   for (int i = 0; i < 80; ++i) {
     uint32_t f, k;

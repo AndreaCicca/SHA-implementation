@@ -32,15 +32,59 @@ Queste funzioni sono utilizzate negli ambiti in cui ci sia la necessità di veri
 
 \begin{frame}
 \frametitle{Preimage resistence}
-Prima (debole) resistenza alla preimmagine:
+\textbf{Prima (debole) resistenza alla preimmagine}:
 \begin{itemize}
     \item per quasi tutti gli output pre-specificati, è computazionalmente infattibile trovare un qualsiasi input che venga hashato a quell'output.
     Avendo \( y \), è difficile trovare un \( x \) tale che \( h(x) = y \).
 \end{itemize}
-Seconda (forte) resistenza alla preimmagine:
+\textbf{Seconda (forte) resistenza alla preimmagine}:
 \begin{itemize}
     \item per un input specificato, è computazionalmente infattibile trovare un altro input che produca lo stesso output.
      Avendo \( x \), è difficile trovare un secondo input \( x' \neq x \) tale che \( h(x) = h(x') \).
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Secure Hash Algorithm: Sha1}
+
+La specifica originale è stata pubblicata nel 1993 come Secure Hash Standard dal National Institute of Standards and Technology (NIST).
+SHA0 fu ritirato dall'NSA e sostituito da una versione rivista dopo 2 anni quando fu pubblicato SHA1 che prevedeva una rotazione di bit in più
+per correggere un difetto nell'algoritmo originale.
+
+\vspace{1cm}
+
+I digest prodotti da Sha1 sono di 160 bit, e ogni messaggio può essere al massimo di \(2^{64} - 1\) bit.
+\end{frame}
+
+\begin{frame}
+\frametitle{Secure Hash Algorithm: Funzionamento}
+\begin{itemize}
+    \item \textbf{Padding}: il messaggio viene convertito in binario e viene aggiunto un bit 1 seguito da zeri fino a che la lunghezza del messaggio è congrua a 448 modulo 512.
+    \item \textbf{Lunghezza}: viene aggiunta la lunghezza del messaggio originale in binario a 64 bit.
+    Al termine del primi 2 passaggi si avrà un messaggio con una lunghezza multipla di 512 bit.
+    \item \textbf{Registri}: vengono inizializzati 5 registri da 32 bit con dei valori fissi.
+    \begin{itemize}
+        \item A = 67452301
+        \item B = EFCDAB89
+        \item C = 98BADCFE
+        \item D = 10325476
+        \item E = C3D2E1F0
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Secure Hash Algorithm: Funzionamento P2}
+\begin{itemize}
+    \item \textbf{Elaborazione dei blocchi}: 
+    \begin{itemize}
+        \item I blocchi di 512 bit vengono divisi in 16 parole da 32 bit.
+        \item Funzione di compressione che è formata da 4 cicli di 20 passi cadauno.
+        \item Alla fine di ogni blocco i registri vengono aggiornati con i valori ottenuti.
+    \end{itemize}
+\end{itemize}
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{img/1-img/SHA-1.png}
+\end{center}
 \end{frame}
