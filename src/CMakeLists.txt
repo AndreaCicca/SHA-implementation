@@ -20,7 +20,6 @@ add_library(logging-lib ${LIB_LOG_SOURCES})
 
 # Trova le librerie installate tramite conan
 find_package(Boost)
-find_package(GTest REQUIRED)
 find_package(OpenSSL REQUIRED)
 
 # Aggiungi l'eseguibile principale
@@ -35,6 +34,5 @@ target_link_libraries(logging-lib PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     hashlib
     logging-lib
-    gtest::gtest
     openssl::openssl
 )
