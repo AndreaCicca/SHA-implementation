@@ -11,7 +11,7 @@ git clone https://github.com/AndreaCicca/crittografia-progetto
 
 ```
 
-Installazione di conan [pagina download ufficiale](https://conan.io/downloads).
+Installazione di conan -> [pagina download ufficiale](https://conan.io/downloads).
 
 Installazione delle dipendenze e compilazione del progetto
 
