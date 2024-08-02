@@ -1,6 +1,6 @@
 rm -rf build
 mkdir build
-conan install . --output-folder=build --build=missing
+./pre-compilation.sh
 cd build
 cmake .. --preset conan-release
 cmake --build .

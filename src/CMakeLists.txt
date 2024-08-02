@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.28)
 project(cripto_project)
 
 # Impostazione della versione dello standard C++
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Includi la cartella headers per cercare i file di intestazione
@@ -18,8 +18,10 @@ file(GLOB LIB_LOG_SOURCES "lib-log/*.cc")
 add_library(hashlib ${LIB_SOURCES})
 add_library(logging-lib ${LIB_LOG_SOURCES})
 
-# Trova Boost
+# Trova le librerie installate tramite conan
 find_package(Boost)
+find_package(GTest REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 # Aggiungi l'eseguibile principale
 add_executable(${PROJECT_NAME} main.cc)
@@ -33,4 +35,6 @@ target_link_libraries(logging-lib PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     hashlib
     logging-lib
+    gtest::gtest
+    openssl::openssl
 )
