@@ -88,6 +88,10 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   uint32_t a = state[0], b = state[1], c = state[2], d = state[3], e = state[4];
 
   // Le 80 iterazioni per il calcolo dell'hash
+  // ^ = XOR -> OR esclusivo
+  // & = AND
+  // | = OR
+
   for (int i = 0; i < 80; ++i) {
     uint32_t f, k;
     if (i < 20) {
@@ -112,6 +116,7 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
     a = temp;
   }
 
+  // Aggiornamento dello stato generale.
   state[0] += a;
   state[1] += b;
   state[2] += c;
@@ -127,18 +132,23 @@ void SHA1::pad() {
   bitCount += bufferLength * 8;
   // aggiunta di un bit a 1 alla fine del messaggio
   buffer[bufferLength++] = 0x80;
-  // Se la lunghezza del buffer con il bit aggiunto è maggiore di 56
-  // allora si deve aggiungere un blocco di 512 bit
+  // Se la lunghezza del buffer con il bit aggiunto è maggiore di 448 bit
+  // allora non ci sarà abbastanza spazio per aggiungere la lunghezza
+  // di 64 bit del messaggio.
   if (bufferLength > 56) {
+    // Riepio il buffer con 0 fino a 512 bit
     std::memset(buffer + bufferLength, 0, SHA1_BLOCK_SIZE - bufferLength);
+    // calcolo l'hash parziale del blocco
     transform(buffer);
     bufferLength = 0;
   }
 
-  // padding fino a 56 byte
+  // padding con 0 fino a 56 byte (448 bit)
   std::memset(buffer + bufferLength, 0, 56 - bufferLength);
 
-  // aggiunta della lunghezza del messaggio in bit
+  // aggiunta della lunghezza del messaggio come un numero a 64 bit
+  // alla fine del blocco
+  // 448 + 64 = 512 bit
   for (int i = 0; i < 8; ++i) {
     buffer[56 + i] = (bitCount >> ((7 - i) * 8)) & 0xFF;
   }
