@@ -16,6 +16,7 @@ void cripto_test_sha1(const std::string &message) {
   // Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
   sha1.final(digest);
 
+  // Converto il digest in una stringa esadecimale
   std::string result =
       cripto::SHA1::toHexString(digest, cripto::SHA1_DIGEST_SIZE);
   std::cout << "Cripto  SHA1: " << result << std::endl;
