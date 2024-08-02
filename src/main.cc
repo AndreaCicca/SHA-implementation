@@ -9,8 +9,11 @@ void cripto_test_sha1(const std::string &message) {
 
   cripto::SHA1 sha1;
 
+  // Eseguo la prima parte dell'hash e converto la stringa in un array di byte
   sha1.update(reinterpret_cast<const uint8_t *>(message.data()),
               message.length());
+
+  // Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
   sha1.final(digest);
 
   std::string result =

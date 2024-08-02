@@ -6,7 +6,16 @@
 
 namespace cripto {
 
+/**
+ * @brief Funzione che ruota a sinistra un valore di 32 bit
+ *
+ * @param value valore da ruotare
+ * @param count numero di posizioni di cui ruotare il ruotare il valore
+ * @return uint32_t valore ruotato
+ */
 inline uint32_t leftRotate(uint32_t value, unsigned int count) {
+  // shift a sinistra di count posizioni
+  // shift a destra di 32 - count posizioni
   return (value << count) | (value >> (32 - count));
 }
 
@@ -57,7 +66,6 @@ void SHA1::update(const uint8_t *data, size_t length) {
   }
 }
 
-
 void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   uint32_t w[80];
 
@@ -68,12 +76,18 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
            (block[i * 4 + 2] << 8) | block[i * 4 + 3];
   }
 
+  // Espanzione delle parole in 80 parole da 32 bit
   for (int i = 16; i < 80; ++i) {
     w[i] = leftRotate(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
   }
 
+  // copio i 5 stati nelle variabili locali
+  // andrò soltanto a modificare queste variabili,
+  // in questo modo l'output della funzione di hash sarà sempre
+  // 5 * 32 bit = 160 bit
   uint32_t a = state[0], b = state[1], c = state[2], d = state[3], e = state[4];
 
+  // Le 80 iterazioni per il calcolo dell'hash
   for (int i = 0; i < 80; ++i) {
     uint32_t f, k;
     if (i < 20) {
@@ -105,19 +119,26 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   state[4] += e;
 }
 
+/**
+ * @brief Funzione di padding
+ *
+ */
 void SHA1::pad() {
   bitCount += bufferLength * 8;
-
+  // aggiunta di un bit a 1 alla fine del messaggio
   buffer[bufferLength++] = 0x80;
-
+  // Se la lunghezza del buffer con il bit aggiunto è maggiore di 56
+  // allora si deve aggiungere un blocco di 512 bit
   if (bufferLength > 56) {
     std::memset(buffer + bufferLength, 0, SHA1_BLOCK_SIZE - bufferLength);
     transform(buffer);
     bufferLength = 0;
   }
 
+  // padding fino a 56 byte
   std::memset(buffer + bufferLength, 0, 56 - bufferLength);
 
+  // aggiunta della lunghezza del messaggio in bit
   for (int i = 0; i < 8; ++i) {
     buffer[56 + i] = (bitCount >> ((7 - i) * 8)) & 0xFF;
   }
@@ -125,6 +146,11 @@ void SHA1::pad() {
   transform(buffer);
 }
 
+/**
+ * @brief Conclusione dell'hash e restituzione del digest
+ *
+ * @param digest
+ */
 void SHA1::final(uint8_t digest[SHA1_DIGEST_SIZE]) {
   pad();
 
