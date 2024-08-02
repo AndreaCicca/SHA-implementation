@@ -66,6 +66,11 @@ void SHA1::update(const uint8_t *data, size_t length) {
   }
 }
 
+/**
+ * @brief Funzione di trasformazione che permette di processare un blocco
+ *
+ * @param block
+ */
 void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   uint32_t w[80];
 
@@ -173,6 +178,13 @@ void SHA1::final(uint8_t digest[SHA1_DIGEST_SIZE]) {
   }
 }
 
+/**
+ * @brief Funzione che converte un digest in una stringa esadecimale
+ *
+ * @param digest
+ * @param length
+ * @return std::string
+ */
 std::string SHA1::toHexString(const uint8_t *digest, size_t length) {
   std::stringstream ss;
   ss << std::hex << std::setfill('0');
