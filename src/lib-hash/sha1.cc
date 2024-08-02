@@ -1,4 +1,5 @@
 #include "sha1.hh"
+#include "logging.hh"
 #include <algorithm>
 #include <cstring>
 #include <iomanip>
@@ -60,6 +61,10 @@ void SHA1::update(const uint8_t *data, size_t length) {
 
       // processamento del buffer
       transform(buffer);
+
+      // logging trace
+      cripto::log_trace("SHA1: Buffer processed");
+
       bitCount += 512;
       bufferLength = 0;
     }
@@ -127,7 +132,12 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   state[1] += b;
   state[2] += c;
   state[3] += d;
-  state[4] += e;
+  state[4] += e; 
+
+  for (int i = 0; i < 5; ++i) {
+    cripto::log_trace("SHA1: State " + std::to_string(i) + " = " +
+                      std::to_string(state[i]));
+  }
 }
 
 /**

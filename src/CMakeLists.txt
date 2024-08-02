@@ -31,8 +31,13 @@ target_link_libraries(logging-lib PRIVATE
     boost::boost
 )
 
+target_link_libraries(hashlib PRIVATE 
+    logging-lib
+)
+
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     hashlib
     logging-lib
     openssl::openssl
+    boost::boost
 )

@@ -3,7 +3,9 @@
 
 namespace cripto {
 
-void init_logging();
+void init_logging(bool trace);
+
+void log_trace(const std::string &message);
 
 void log_info(const std::string &message);
 

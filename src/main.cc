@@ -1,4 +1,5 @@
 #include "sha1.hh"
+#include "logging.hh"
 #include <iomanip>
 #include <iostream>
 #include <openssl/sha.h>
@@ -20,6 +21,7 @@ void cripto_test_sha1(const std::string &message) {
   std::string result =
       cripto::SHA1::toHexString(digest, cripto::SHA1_DIGEST_SIZE);
   std::cout << "Cripto  SHA1: " << result << std::endl;
+  cripto::log_trace("Cripto  SHA1: " + result);
 }
 
 void openssl_test_sha1(const std::string &message) {
@@ -29,9 +31,13 @@ void openssl_test_sha1(const std::string &message) {
 
   std::string hash_string = cripto::SHA1::toHexString(hash, SHA_DIGEST_LENGTH);
   std::cout << "OpenSSL SHA1: " << hash_string << std::endl;
+  cripto::log_trace("OpenSSL SHA1: " + hash_string);
 }
 
 int main() {
+
+  cripto::init_logging(true);
+
   std::vector<std::string> test_cases = {
       "",
       "a",
@@ -41,11 +47,12 @@ int main() {
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       "123456789012345678901234567890123456789012345678901234567890123456789012"
       "34567890",
-      "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, "
+      "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura",
       "ché la diritta via era smarrita."};
 
   for (const auto &test : test_cases) {
     std::cout << "Testing message: \"" << test << "\"" << std::endl;
+    cripto::log_trace("Testing message: \"" + test + "\"");
     cripto_test_sha1(test);
     openssl_test_sha1(test);
     std::cout << std::endl;
