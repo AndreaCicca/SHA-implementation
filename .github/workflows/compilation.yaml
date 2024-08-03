@@ -1,4 +1,4 @@
-name: Cmake Compilation
+name: C++ CI
 
 on:
   push:
@@ -14,17 +14,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Conan
+    - name: Setup Conan
       uses: jwidauer/setup-conan@v1
 
     - name: Create build directory
-      run: cd src && mkdir build
+      run: mkdir -p src/build
 
     - name: Install dependencies
-      run: conan install . --output-folder=build --build=missing
+      run: conan install src --output-folder=src/build --build=missing
 
     - name: Configure CMake
-      run: cmake -S . -B build --preset conan-release
+      run: cmake -S src -B src/build --preset conan-release
 
     - name: Build
-      run: cmake --build build
+      run: cmake --build src/build
