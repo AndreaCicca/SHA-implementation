@@ -1,3 +1,14 @@
+/**
+ * @file logging.cc
+ * @author Andrea Ciccarello
+ * @brief Implementazione delle funzioni di logging
+ * @version 1.0
+ * @date 2024-08-03
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "logging.hh"
 #include <boost/log/core.hpp>
 #include <boost/log/expressions.hpp>

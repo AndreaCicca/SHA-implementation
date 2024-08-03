@@ -1,3 +1,14 @@
+/**
+ * @file main.cc
+ * @author Andrea Ciccarello
+ * @brief Funzione Main con il test delle di SHA1 tramite openssl
+ * @version 1.0
+ * @date 2024-08-03
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "sha1.hh"
 #include "logging.hh"
 #include <iomanip>

@@ -1,3 +1,14 @@
+/**
+ * @file sha1.cc
+ * @author Andrea Ciccarello
+ * @brief Implementazione della classe SHA1
+ * @version 1.0
+ * @date 2024-08-03
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "sha1.hh"
 #include "logging.hh"
 #include <algorithm>
@@ -62,9 +73,6 @@ void SHA1::update(const uint8_t *data, size_t length) {
       // processamento del buffer
       transform(buffer);
 
-      // logging trace
-      cripto::log_trace("SHA1: Buffer processed");
-
       bitCount += 512;
       bufferLength = 0;
     }
@@ -90,6 +98,8 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   for (int i = 16; i < 80; ++i) {
     w[i] = leftRotate(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
   }
+
+  cripto::log_trace("SHA1: Processing block");
 
   // copio i 5 stati nelle variabili locali
   // andrò soltanto a modificare queste variabili,
@@ -144,7 +154,7 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
  * @brief Funzione di padding
  *
  */
-void SHA1::pad() {
+void SHA1::padding() {
   bitCount += bufferLength * 8;
   // aggiunta di un bit a 1 alla fine del messaggio
   buffer[bufferLength++] = 0x80;
@@ -178,7 +188,7 @@ void SHA1::pad() {
  * @param digest
  */
 void SHA1::final(uint8_t digest[SHA1_DIGEST_SIZE]) {
-  pad();
+  padding();
 
   for (int i = 0; i < 5; ++i) {
     digest[i * 4] = (state[i] >> 24) & 0xFF;

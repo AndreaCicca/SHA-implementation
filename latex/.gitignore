@@ -1,3 +1,5 @@
+# Latex gitignore
+
 **.log
 **.aux
 **.pdf

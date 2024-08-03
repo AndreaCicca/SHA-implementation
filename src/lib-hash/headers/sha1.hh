@@ -1,3 +1,14 @@
+/**
+ * @file sha1.hh
+ * @author Andrea Ciccarello
+ * @brief Definizione classe SHA1
+ * @version 1.0
+ * @date 2024-08-03
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #pragma once
 #include <cstdint>
 #include <string>
@@ -16,7 +27,7 @@ public:
 
 private:
   void transform(const uint8_t block[SHA1_BLOCK_SIZE]);
-  void pad();
+  void padding();
 
   uint32_t state[5];
   uint64_t bitCount;
