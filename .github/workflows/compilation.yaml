@@ -1,4 +1,4 @@
-name: C++ CI
+name: Cmake Compilation
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       uses: jwidauer/setup-conan@v1
 
     - name: Create build directory
-      run: mkdir build
+      run: cd src && mkdir build
 
     - name: Install dependencies
       run: conan install . --output-folder=build --build=missing
