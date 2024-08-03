@@ -1,4 +1,4 @@
-name: C++ CI
+name: Cmake compilation Conan
 
 on:
   push:
