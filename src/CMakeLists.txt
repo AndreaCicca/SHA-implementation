@@ -41,3 +41,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     openssl::openssl
     boost::boost
 )
+
+configure_file(${CMAKE_SOURCE_DIR}/commedia.txt ${CMAKE_BINARY_DIR}/commedia.txt COPYONLY)
