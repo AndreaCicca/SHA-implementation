@@ -17,6 +17,9 @@ jobs:
     - name: Setup Conan
       uses: jwidauer/setup-conan@v1
 
+    - name: Create default Conan profile
+      run: conan profile detect --force
+
     - name: Create build directory
       run: mkdir -p src/build
 
