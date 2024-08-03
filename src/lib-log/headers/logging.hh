@@ -4,9 +4,9 @@
  * @brief Definizione delle funzioni di logging
  * @version 1.0
  * @date 2024-08-03
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 #pragma once
 #include <string>

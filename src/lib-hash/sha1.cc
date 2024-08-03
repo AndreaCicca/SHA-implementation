@@ -4,9 +4,9 @@
  * @brief Implementazione della classe SHA1
  * @version 1.0
  * @date 2024-08-03
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include "sha1.hh"
@@ -142,7 +142,7 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   state[1] += b;
   state[2] += c;
   state[3] += d;
-  state[4] += e; 
+  state[4] += e;
 
   for (int i = 0; i < 5; ++i) {
     cripto::log_trace("SHA1: State " + std::to_string(i) + " = " +

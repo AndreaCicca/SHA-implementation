@@ -4,9 +4,9 @@
  * @brief Implementazione delle funzioni di logging
  * @version 1.0
  * @date 2024-08-03
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include "logging.hh"
@@ -56,7 +56,7 @@ void log_info(const std::string &message) {
 }
 
 void log_error(const std::string &message) {
-  BOOST_LOG_TRIVIAL(error) << message  << std::flush;
+  BOOST_LOG_TRIVIAL(error) << message << std::flush;
 }
 
 void log_warning(const std::string &message) {

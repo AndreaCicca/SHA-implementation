@@ -4,9 +4,9 @@
  * @brief Definizione classe SHA1
  * @version 1.0
  * @date 2024-08-03
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #pragma once
@@ -50,12 +50,12 @@ private:
 
 // Pre-processing:
 // append the bit '1' to the message
-// append k bits '0', where k is the minimum number ≥ 0 such that the resulting message
+// append k bits '0', where k is the minimum number ≥ 0 such that the resulting
+// message
 //     length (in bits) is congruent to 448 (mod 512)
-// append length of message (before pre-processing), in bits, as 64-bit big-endian integer
-// Process the message in successive 512-bit chunks:
-// break message into 512-bit chunks
-// for each chunk
+// append length of message (before pre-processing), in bits, as 64-bit
+// big-endian integer Process the message in successive 512-bit chunks: break
+// message into 512-bit chunks for each chunk
 //     break chunk into sixteen 32-bit big-endian words w[i], 0 <= i <= 15
 
 //     Extend the sixteen 32-bit words into eighty 32-bit words:
