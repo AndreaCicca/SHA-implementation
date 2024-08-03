@@ -17,6 +17,22 @@ Queste funzioni sono utilizzate negli ambiti in cui ci sia la necessità di veri
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Fefinizione funzione di hash}
+
+Dato un alfabeto $\mathfrak{A}$, indicheremo con $\mathfrak{A}^*$ l’insieme di tutte le stringhe finite di elementi di $\mathfrak{A}$
+
+\[
+\emptyset^* = \bigcup_{n \geq 1} \mathfrak{A}^n
+\]
+
+Tipicamente $\mathfrak{A} = \{0, 1\}$, e quindi $\mathfrak{A}^*$ è l’insieme di tutte le stringhe composte da bit.
+
+\vspace{1cm}
+Una funzione hash è una funzione $h : \mathfrak{A}^* \rightarrow \mathfrak{B}^n$ che mappa stringhe di lunghezza arbitraria in stringhe di lunghezza fissa $n$ (per esempio n = 160)
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Proprietà delle funzioni di hash}
@@ -25,7 +41,7 @@ Queste funzioni sono utilizzate negli ambiti in cui ci sia la necessità di veri
     \item \textbf{Determinismo}: per uno stesso input la funzione restituisce sempre lo stesso output.
     \item \textbf{Velocità}: la funzione deve essere veloce da calcolare.
     \item \textbf{Difficoltà di inversione}: data l'uscita della funzione è computazionalmente difficile trovare l'input.
-    \item \textbf{Diffusione}: piccole variazioni nell'input devono produrre grandi variazioni nell'output.
+    \item \textbf{Effetto valanga}: piccole variazioni nell'input devono produrre grandi variazioni nell'output.
     \item \textbf{Resistenza alle collisioni}: è computazionalmente difficile trovare due input diversi che producano lo stesso output.
 \end{itemize}
 \end{frame}
@@ -46,15 +62,15 @@ Queste funzioni sono utilizzate negli ambiti in cui ci sia la necessità di veri
 \end{frame}
 
 \begin{frame}
-\frametitle{Secure Hash Algorithm: Sha1}
+\frametitle{Secure Hash Algorithm: SHA-1}
 
-La specifica originale è stata pubblicata nel 1993 come Secure Hash Standard dal National Institute of Standards and Technology (NIST).
-SHA0 fu ritirato dall'NSA e sostituito da una versione rivista dopo 2 anni quando fu pubblicato SHA1 che prevedeva una rotazione di bit in più
+La specifica originale è stata pubblicata nel 1993 come \textbf{Secure Hash Standard} dal National Institute of Standards and Technology.
+SHA-0 fu ritirato dall'NSA e sostituito da una versione rivista dopo 2 anni quando fu pubblicato SHA-1 che prevedeva una rotazione di bit in più
 per correggere un difetto nell'algoritmo originale.
 
 \vspace{1cm}
 
-I digest prodotti da Sha1 sono di 160 bit, e ogni messaggio può essere al massimo di \(2^{64} - 1\) bit.
+I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può essere al massimo di \textbf{\(2^{64} - 1\) bit}.
 \end{frame}
 
 \begin{frame}
@@ -84,7 +100,27 @@ I digest prodotti da Sha1 sono di 160 bit, e ogni messaggio può essere al massi
         \item Alla fine di ogni blocco i registri vengono aggiornati con i valori ottenuti.
     \end{itemize}
 \end{itemize}
+
 \begin{center}
     \includegraphics[width=0.4\textwidth]{img/1-img/SHA-1.png}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Firma digitale con PGP}
+PGP calcola un hash dal testo in chiaro, e crea poi da questo hash la firma digitale usando la  \textbf{chiave privata del mittente}.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{img/1-img/PGP_diagram_IT.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Firma digitale con PGP Parte 2}
+Il destinatario del messaggio calcola il message digest dal testo in chiaro decifrato, e poi usa la \textbf{chiave pubblica del mittente} ed il valore del message digest e la firma.
+In questo modo si può verificare che il messaggio non sia stato alterato e che sia stato inviato dal mittente.
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{img/1-img/PGP_diagram_IT.png}
 \end{center}
 \end{frame}

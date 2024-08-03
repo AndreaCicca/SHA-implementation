@@ -1,9 +1,26 @@
-
-\section{Attacchi Sha1} % Sections are added in order to organize your presentation into discrete blocks, all sections and subsections are automatically output to the table of contents as an overview of the talk but NOT output in the presentation as separate slides
+\section{Attacchi Sha1}
 
 %------------------------------------------------
+\begin{frame}
+\frametitle{Primi attacchi a SHA-1}
+Nel 2005 il team di ricerca della Shandong University annunciò il primo attacco a SHA-1, con una complessità di \(2^{69}\) operazioni. Pochi mesi dopo fu annunciato un attacco a \(2^{63}\) operazioni.
+Un normale attacco che sfrutta il paradosso del compleanno avrebbe una complessità di \(2^{80}\) operazioni.
+
+\vspace{1cm}
+
+Nel 1999 DESCracker era già capace di eseguire \(2^{56}\) operazioni in 56 ore, seguendo la legge di Moore i tempi di calcolo dovevano già essere alla portata di governi e organizzazioni criminali nel 2010.
+\end{frame}
+
 
 \begin{frame}
-\frametitle{Attacchi Sha1}
+\frametitle{Google SHAttered}
 
+In 2 anni hanno trovato un modo per generare due PDF diversi con lo stesso hash SHA-1 usando un prefisso specifico per il PDF.
+\begin{itemize}
+    \item 9 quantiglioni (\(9,223,372,036,854,775,808\)) di calcoli SHA1 in totale
+    \item 6.500 anni di calcolo CPU per completare la prima fase dell'attacco
+    \item 110 anni di calcolo GPU per completare la seconda fase 
+\end{itemize}
+
+L'attacco SHA-1 shattered è ancora più di 100.000 volte più veloce di un attacco brute force, che rimane impraticabile (\(2^{63}\) operazioni).
 \end{frame}
