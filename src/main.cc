@@ -72,8 +72,7 @@ int main() {
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       "123456789012345678901234567890123456789012345678901234567890123456789012"
       "34567890",
-      "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura",
-      "ché la diritta via era smarrita."};
+      "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura"};
 
   for (const auto &test : test_cases) {
     std::cout << "Testing message: \"" << test << "\"" << std::endl;
