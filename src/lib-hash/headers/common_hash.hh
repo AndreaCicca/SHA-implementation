@@ -4,15 +4,15 @@
  * @brief Common header file for hash functions
  * @version 1.0
  * @date 2024-08-04
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #pragma ones
+#include "logging.hh"
 #include "sha0.hh"
 #include "sha1.hh"
-#include "logging.hh"
 #include <fstream>
 #include <iomanip>
 #include <iostream>

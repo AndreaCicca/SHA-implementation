@@ -9,9 +9,8 @@
  *
  */
 
-#include "logging.hh"
 #include "common_hash.hh"
-
+#include "logging.hh"
 
 int main() {
 
@@ -31,8 +30,8 @@ int main() {
   for (const auto &test : test_cases) {
     std::cout << "Testing message: \"" << test << "\"" << std::endl;
     cripto::log_trace("Testing message: \"" + test + "\"");
-    (void) cripto_test_sha1(test);
-    (void) openssl_test_sha1(test);
+    (void)cripto_test_sha1(test);
+    (void)openssl_test_sha1(test);
     std::cout << std::endl;
   }
 
@@ -41,8 +40,8 @@ int main() {
     std::string commedia_content = read_file("commedia.txt");
     std::cout << "Calcolo hash di commedia.txt" << std::endl;
     cripto::log_trace("Calcolo hash di commedia.txt");
-    (void) cripto_test_sha1(commedia_content);
-    (void) openssl_test_sha1(commedia_content);
+    (void)cripto_test_sha1(commedia_content);
+    (void)openssl_test_sha1(commedia_content);
   } catch (const std::exception &e) {
     std::cerr << "Errore: " << e.what() << std::endl;
     cripto::log_error("Errore durante la lettura di commedia.txt: " +

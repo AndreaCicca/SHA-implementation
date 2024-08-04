@@ -98,7 +98,7 @@ void SHA0::transform(const uint8_t block[SHA0_BLOCK_SIZE]) {
   // a differenza di SHA1 non c'è bisogno di fare la rotazione
   for (int i = 16; i < 80; ++i) {
     w[i] = w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16];
-}
+  }
 
   cripto::log_trace("SHA0: Processing block");
 
