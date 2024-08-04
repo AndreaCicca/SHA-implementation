@@ -15,7 +15,7 @@ file(GLOB LIB_SOURCES "lib-hash/*.cc")
 file(GLOB LIB_LOG_SOURCES "lib-log/*.cc")
 
 # Aggiungi librerie
-add_library(hashlib ${LIB_SOURCES})
+add_library(hash-lib ${LIB_SOURCES})
 add_library(logging-lib ${LIB_LOG_SOURCES})
 
 # Trova le librerie installate tramite conan
@@ -31,12 +31,12 @@ target_link_libraries(logging-lib PRIVATE
     boost::boost
 )
 
-target_link_libraries(hashlib PRIVATE 
+target_link_libraries(hash-lib PRIVATE 
     logging-lib
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE 
-    hashlib
+    hash-lib
     logging-lib
     openssl::openssl
     boost::boost
