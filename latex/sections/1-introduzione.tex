@@ -90,6 +90,7 @@ I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può esser
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}
 \frametitle{Secure Hash Algorithm: Funzionamento P2}
 \begin{itemize}
@@ -104,6 +105,20 @@ I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può esser
 \begin{center}
     \includegraphics[width=0.4\textwidth]{img/1-img/SHA-1.png}
 \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Secure Hash Algorithm: Funzionamento P3}
+
+Ogni iterazione usa una funzione non lineare (\textit{f}) e una costante (\textit{k}) che varia a seconda dell'intervallo di iterazione.
+La costante k viene successivamente utilizzata all'interno della funzione di compressione.
+
+\begin{itemize}
+    \item \textbf{Iterazioni 0-19}: \textit{f = (b and c) or (not b and d)} con \textit{k = 0x5A827999}
+    \item \textbf{Iterazioni 20-39}: \textit{f = b xor c xor d} con \textit{k = 0x6ED9EBA1}
+    \item \textbf{Iterazioni 40-59}: \textit{f = (b and c) or (b and d) or (c and d)} con \textit{k = 0x8F1BBCDC}
+    \item \textbf{Iterazioni 60-79}: \textit{f = b xor c xor d} con \textit{k = 0xCA62C1D6}
+  \end{itemize}
 
 \end{frame}
 
