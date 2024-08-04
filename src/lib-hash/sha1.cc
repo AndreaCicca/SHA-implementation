@@ -25,7 +25,8 @@ namespace cripto {
  * @param count numero di posizioni di cui ruotare il ruotare il valore
  * @return uint32_t valore ruotato
  */
-inline uint32_t leftRotate(uint32_t value, unsigned int count) {
+inline uint32_t
+leftRotate(uint32_t value, unsigned int count) {
   // shift a sinistra di count posizioni
   // shift a destra di 32 - count posizioni
   return (value << count) | (value >> (32 - count));
@@ -44,8 +45,9 @@ inline uint32_t leftRotate(uint32_t value, unsigned int count) {
  *
  */
 SHA1::SHA1()
-    : state{0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0},
-      bitCount(0), bufferLength(0) {}
+  : state{0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0},
+    bitCount(0), bufferLength(0) {
+}
 
 /**
  * @brief Funcione che ha il compito di dividere i dati in blocchi di 512 bit,
@@ -54,7 +56,8 @@ SHA1::SHA1()
  * @param data
  * @param length
  */
-void SHA1::update(const uint8_t *data, size_t length) {
+void
+SHA1::update(const uint8_t *data, size_t length) {
   // tutti i dati devono essere processati
   while (length > 0) {
     // Quanti byte posso copiare nel buffer
@@ -84,7 +87,8 @@ void SHA1::update(const uint8_t *data, size_t length) {
  *
  * @param block
  */
-void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
+void
+SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
   uint32_t w[80];
 
   // Conversione dei messaggi in 16 parole da 32 bit
@@ -130,11 +134,11 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
     }
 
     uint32_t temp = leftRotate(a, 5) + f + e + k + w[i];
-    e = d;
-    d = c;
-    c = leftRotate(b, 30);
-    b = a;
-    a = temp;
+    e             = d;
+    d             = c;
+    c             = leftRotate(b, 30);
+    b             = a;
+    a             = temp;
   }
 
   // Aggiornamento dello stato generale.
@@ -154,7 +158,8 @@ void SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
  * @brief Funzione di padding
  *
  */
-void SHA1::padding() {
+void
+SHA1::padding() {
   bitCount += bufferLength * 8;
   // aggiunta di un bit a 1 alla fine del messaggio
   buffer[bufferLength++] = 0x80;
@@ -187,11 +192,12 @@ void SHA1::padding() {
  *
  * @param digest
  */
-void SHA1::final(uint8_t digest[SHA1_DIGEST_SIZE]) {
+void
+SHA1::final(uint8_t digest[SHA1_DIGEST_SIZE]) {
   padding();
 
   for (int i = 0; i < 5; ++i) {
-    digest[i * 4] = (state[i] >> 24) & 0xFF;
+    digest[i * 4]     = (state[i] >> 24) & 0xFF;
     digest[i * 4 + 1] = (state[i] >> 16) & 0xFF;
     digest[i * 4 + 2] = (state[i] >> 8) & 0xFF;
     digest[i * 4 + 3] = state[i] & 0xFF;
@@ -205,7 +211,8 @@ void SHA1::final(uint8_t digest[SHA1_DIGEST_SIZE]) {
  * @param length
  * @return std::string
  */
-std::string SHA1::toHexString(const uint8_t *digest, size_t length) {
+std::string
+SHA1::toHexString(const uint8_t *digest, size_t length) {
   std::stringstream ss;
   ss << std::hex << std::setfill('0');
   for (size_t i = 0; i < length; ++i) {

@@ -22,7 +22,8 @@
 #include <string>
 #include <vector>
 
-std::string cripto_test_sha1(const std::string &message) {
+std::string
+cripto_test_sha1(const std::string &message) {
   uint8_t digest[cripto::SHA1_DIGEST_SIZE];
 
   cripto::SHA1 sha1;
@@ -36,13 +37,14 @@ std::string cripto_test_sha1(const std::string &message) {
 
   // Converto il digest in una stringa esadecimale
   std::string result =
-      cripto::SHA1::toHexString(digest, cripto::SHA1_DIGEST_SIZE);
+    cripto::SHA1::toHexString(digest, cripto::SHA1_DIGEST_SIZE);
   std::cout << "Cripto  SHA1: " << result << std::endl;
   cripto::log_trace("Cripto  SHA1: " + result);
   return result;
 }
 
-std::string cripto_test_sha0(const std::string &message) {
+std::string
+cripto_test_sha0(const std::string &message) {
   uint8_t digest[cripto::SHA0_DIGEST_SIZE];
 
   cripto::SHA0 sha0;
@@ -56,13 +58,14 @@ std::string cripto_test_sha0(const std::string &message) {
 
   // Converto il digest in una stringa esadecimale
   std::string result =
-      cripto::SHA0::toHexString(digest, cripto::SHA0_DIGEST_SIZE);
+    cripto::SHA0::toHexString(digest, cripto::SHA0_DIGEST_SIZE);
   std::cout << "Cripto  SHA0: " << result << std::endl;
   cripto::log_trace("Cripto  SHA0: " + result);
   return result;
 }
 
-std::string openssl_test_sha1(const std::string &message) {
+std::string
+openssl_test_sha1(const std::string &message) {
   unsigned char hash[SHA_DIGEST_LENGTH];
   SHA1(reinterpret_cast<const unsigned char *>(message.data()),
        message.length(), hash);
@@ -73,7 +76,8 @@ std::string openssl_test_sha1(const std::string &message) {
   return hash_string;
 }
 
-std::string read_file(const std::string &filename) {
+std::string
+read_file(const std::string &filename) {
   std::ifstream file(filename);
   if (!file.is_open()) {
     throw std::runtime_error("Impossibile aprire il file: " + filename);

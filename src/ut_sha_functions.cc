@@ -39,7 +39,8 @@ TEST(SHA1Test, VeryLongString) {
   EXPECT_EQ(cripto_test_sha1(message), openssl_test_sha1(message));
 }
 
-int main(int argc, char **argv) {
+int
+main(int argc, char **argv) {
   cripto::init_logging(false);
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

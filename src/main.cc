@@ -12,20 +12,21 @@
 #include "common_hash.hh"
 #include "logging.hh"
 
-int main() {
+int
+main() {
 
   cripto::init_logging(true);
 
   std::vector<std::string> test_cases = {
-      "",
-      "a",
-      "abc",
-      "message digest",
-      "abcdefghijklmnopqrstuvwxyz",
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-      "123456789012345678901234567890123456789012345678901234567890123456789012"
-      "34567890",
-      "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura"};
+    "",
+    "a",
+    "abc",
+    "message digest",
+    "abcdefghijklmnopqrstuvwxyz",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    "123456789012345678901234567890123456789012345678901234567890123456789012"
+    "34567890",
+    "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura"};
 
   for (const auto &test : test_cases) {
     std::cout << "Testing message: \"" << test << "\"" << std::endl;
