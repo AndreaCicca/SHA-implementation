@@ -21,9 +21,11 @@ add_library(logging-lib ${LIB_LOG_SOURCES})
 # Trova le librerie installate tramite conan
 find_package(Boost)
 find_package(OpenSSL REQUIRED)
+find_package(GTest REQUIRED)
 
 # Aggiungi l'eseguibile principale
 add_executable(${PROJECT_NAME} main.cc)
+add_executable(ut_sha_functions ut_sha_functions.cc)
 
 # Linka la librerie
 
@@ -41,5 +43,15 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     openssl::openssl
     boost::boost
 )
+
+target_link_libraries(ut_sha_functions PRIVATE 
+    hash-lib
+    logging-lib
+    openssl::openssl
+    gtest::gtest
+)
+
+
+
 
 configure_file(${CMAKE_SOURCE_DIR}/commedia.txt ${CMAKE_BINARY_DIR}/commedia.txt COPYONLY)
