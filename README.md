@@ -16,6 +16,8 @@ Installazione di conan -> [pagina download ufficiale](https://conan.io/downloads
 Installazione delle dipendenze e compilazione del progetto
 
 ```bash
+pip install conan
+cd src
 mkdir build
 conan install . --output-folder=build --build=missing
 cd build
