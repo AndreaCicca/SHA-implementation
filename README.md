@@ -19,6 +19,7 @@ Installazione delle dipendenze e compilazione del progetto
 pip install conan
 cd src
 mkdir build
+conan profile detect
 conan install . --output-folder=build --build=missing
 cd build
 cmake .. --preset conan-release
