@@ -4,11 +4,11 @@ set -e
 BUILD_DIR="build"
 PRESET="conan-release"
 
-if [ -d "$BUILD_DIR" ]; then
-    rm -rf "$BUILD_DIR"
-fi
+# if [ -d "$BUILD_DIR" ]; then
+#     rm -rf "$BUILD_DIR"
+# fi
 
-mkdir "$BUILD_DIR"
+# mkdir "$BUILD_DIR"
 
 conan install . --output-folder="$BUILD_DIR" --build=missing
 
