@@ -9,7 +9,7 @@
  *
  */
 
-#pragma ones
+#pragma once
 #include "logging.hh"
 #include "sha0.hh"
 #include "sha1.hh"
@@ -29,8 +29,8 @@ cripto_test_sha1(const std::string &message) {
   cripto::SHA1 sha1;
 
   // Eseguo la prima parte dell'hash e converto la stringa in un array di byte
-  sha1.update(reinterpret_cast<const uint8_t *>(message.data()),
-              message.length());
+  sha1.initialization(reinterpret_cast<const uint8_t *>(message.data()),
+                      message.length());
 
   // Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
   sha1.final(digest);
@@ -50,8 +50,8 @@ cripto_test_sha0(const std::string &message) {
   cripto::SHA0 sha0;
 
   // Eseguo la prima parte dell'hash e converto la stringa in un array di byte
-  sha0.update(reinterpret_cast<const uint8_t *>(message.data()),
-              message.length());
+  sha0.initialization(reinterpret_cast<const uint8_t *>(message.data()),
+                      message.length());
 
   // Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
   sha0.final(digest);

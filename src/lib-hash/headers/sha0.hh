@@ -21,7 +21,7 @@ constexpr unsigned int SHA0_DIGEST_SIZE = 20; // 160 bits
 class SHA0 {
 public:
   SHA0();
-  void               update(const uint8_t *data, size_t length);
+  void               initialization(const uint8_t *data, size_t length);
   void               final(uint8_t digest[SHA0_DIGEST_SIZE]);
   static std::string toHexString(const uint8_t *digest, size_t length);
 

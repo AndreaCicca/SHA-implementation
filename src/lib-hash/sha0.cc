@@ -57,7 +57,7 @@ SHA0::SHA0()
  * @param length
  */
 void
-SHA0::update(const uint8_t *data, size_t length) {
+SHA0::initialization(const uint8_t *data, size_t length) {
   // tutti i dati devono essere processati
   while (length > 0) {
     // Quanti byte posso copiare nel buffer

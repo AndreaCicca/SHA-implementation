@@ -57,18 +57,22 @@ SHA1::SHA1()
  * @param length
  */
 void
-SHA1::update(const uint8_t *data, size_t length) {
+SHA1::initialization(const uint8_t *data, size_t length) {
   // tutti i dati devono essere processati
   while (length > 0) {
     // Quanti byte posso copiare nel buffer
-    // minimo tra length e e lo spazio disponibile nel buffer
+    // minimo tra length e e lo spazio disponibile nel buffer.
+    // Ci sono 2 casi possibili:
+    // 1. I dati da elaborare sono inferiori alla dimensione del buffer
+    // 2. I dati da elaborare sono superiori alla dimensione del buffer
     size_t toCopy = std::min(length, SHA1_BLOCK_SIZE - bufferLength);
     // Copio i dati nel buffer
-    // buffer è al massimo 512 bit
     std::memcpy(buffer + bufferLength, data, toCopy);
-    bufferLength += toCopy;
-    data += toCopy;
-    length -= toCopy;
+    bufferLength = bufferLength + toCopy;
+
+    // data puntatore alla posizione successiva
+    data   = data + toCopy;
+    length = length - toCopy;
 
     // se il buffer è pieno allora lo si deve processare
     if (bufferLength == SHA1_BLOCK_SIZE) {
