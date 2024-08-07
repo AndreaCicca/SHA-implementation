@@ -24,6 +24,9 @@ namespace cripto {
  * @param value valore da ruotare
  * @param count numero di posizioni di cui ruotare il ruotare il valore
  * @return uint32_t valore ruotato
+ *
+ * @note Questa funzione viene utilizzata per l'espansione delle parole e per
+ * la rotazione dei registri di stato.
  */
 inline uint32_t
 leftRotate(uint32_t value, unsigned int count) {
@@ -33,7 +36,7 @@ leftRotate(uint32_t value, unsigned int count) {
 }
 
 /**
- * @brief Costruttore
+ * @brief Costruttore della classe SHA1
  *
  * Ci sono 5 registri di stato inizializzati con i valori iniziali
  * specificati dallo standard.
