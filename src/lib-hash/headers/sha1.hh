@@ -15,36 +15,37 @@
 
 namespace cripto {
 
-constexpr unsigned int SHA1_BLOCK_SIZE  = 64; // 512 bits
+constexpr unsigned int SHA1_BLOCK_SIZE	= 64; // 512 bits
 constexpr unsigned int SHA1_DIGEST_SIZE = 20; // 160 bits
 
 class SHA1 {
-public:
-  SHA1();
-  void               initialization(const uint8_t *data, size_t length);
-  void               final(uint8_t digest[SHA1_DIGEST_SIZE]);
-  static std::string toHexString(const uint8_t *digest, size_t length);
+      public:
+	SHA1();
+	void		   initialization(const uint8_t *data, size_t length);
+	void		   final(uint8_t digest[SHA1_DIGEST_SIZE]);
+	static std::string toHexString(const uint8_t *digest, size_t length);
 
-private:
-  void transform(const uint8_t block[SHA1_BLOCK_SIZE]);
-  void padding();
+      private:
+	void transform(const uint8_t block[SHA1_BLOCK_SIZE]);
+	void padding();
 
-  //! I 5 registri di stato inizializzati con i valori iniziali specificati
-  //! dallo standard.
-  uint32_t state[5];
-  /**
-   * @brief Lunghezza corrente del buffer interno per accumulare i dati prima di
-   * processarlo Quando si raggiungono i 64 byte (512 bit) il buffer viene
-   * processato e il bufferLength azzerato.
-   *
-   * @note Il buffer è di 64 byte (512 bit) come specificato dallo standard.
-   */
-  size_t bufferLength;
+	//! I 5 registri di stato inizializzati con i valori iniziali
+	//! specificati dallo standard.
+	uint32_t state[5];
+	/**
+	 * @brief Lunghezza corrente del buffer interno per accumulare i dati
+	 * prima di processarlo Quando si raggiungono i 64 byte (512 bit) il
+	 * buffer viene processato e il bufferLength azzerato.
+	 *
+	 * @note Il buffer è di 64 byte (512 bit) come specificato dallo
+	 * standard.
+	 */
+	size_t bufferLength;
 
-  //! Tiene traccia del numero di bit processati fino a questo momento, nel
-  //! momento in cui si fa
-  uint64_t bitCount;
-  uint8_t  buffer[SHA1_BLOCK_SIZE];
+	//! Tiene traccia del numero di bit processati fino a questo momento,
+	//! nel momento in cui si fa
+	uint64_t bitCount;
+	uint8_t	 buffer[SHA1_BLOCK_SIZE];
 };
 
 } // namespace cripto

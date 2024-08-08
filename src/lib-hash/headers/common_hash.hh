@@ -24,65 +24,69 @@
 
 std::string
 cripto_test_sha1(const std::string &message) {
-  uint8_t digest[cripto::SHA1_DIGEST_SIZE];
+	uint8_t digest[cripto::SHA1_DIGEST_SIZE];
 
-  cripto::SHA1 sha1;
+	cripto::SHA1 sha1;
 
-  // Eseguo la prima parte dell'hash e converto la stringa in un array di byte
-  sha1.initialization(reinterpret_cast<const uint8_t *>(message.data()),
-                      message.length());
+	// Eseguo la prima parte dell'hash e converto la stringa in un array di
+	// byte
+	sha1.initialization(reinterpret_cast<const uint8_t *>(message.data()),
+			    message.length());
 
-  // Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
-  sha1.final(digest);
+	// Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
+	sha1.final(digest);
 
-  // Converto il digest in una stringa esadecimale
-  std::string result =
-    cripto::SHA1::toHexString(digest, cripto::SHA1_DIGEST_SIZE);
-  std::cout << "Cripto  SHA1: " << result << std::endl;
-  cripto::log_trace("Cripto  SHA1: " + result);
-  return result;
+	// Converto il digest in una stringa esadecimale
+	std::string result =
+	  cripto::SHA1::toHexString(digest, cripto::SHA1_DIGEST_SIZE);
+	std::cout << "Cripto  SHA1: " << result << std::endl;
+	cripto::log_trace("Cripto  SHA1: " + result);
+	return result;
 }
 
 std::string
 cripto_test_sha0(const std::string &message) {
-  uint8_t digest[cripto::SHA0_DIGEST_SIZE];
+	uint8_t digest[cripto::SHA0_DIGEST_SIZE];
 
-  cripto::SHA0 sha0;
+	cripto::SHA0 sha0;
 
-  // Eseguo la prima parte dell'hash e converto la stringa in un array di byte
-  sha0.initialization(reinterpret_cast<const uint8_t *>(message.data()),
-                      message.length());
+	// Eseguo la prima parte dell'hash e converto la stringa in un array di
+	// byte
+	sha0.initialization(reinterpret_cast<const uint8_t *>(message.data()),
+			    message.length());
 
-  // Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
-  sha0.final(digest);
+	// Eseguo la seconda parte dell'hash ed estraggo il digest a 160 bit
+	sha0.final(digest);
 
-  // Converto il digest in una stringa esadecimale
-  std::string result =
-    cripto::SHA0::toHexString(digest, cripto::SHA0_DIGEST_SIZE);
-  std::cout << "Cripto  SHA0: " << result << std::endl;
-  cripto::log_trace("Cripto  SHA0: " + result);
-  return result;
+	// Converto il digest in una stringa esadecimale
+	std::string result =
+	  cripto::SHA0::toHexString(digest, cripto::SHA0_DIGEST_SIZE);
+	std::cout << "Cripto  SHA0: " << result << std::endl;
+	cripto::log_trace("Cripto  SHA0: " + result);
+	return result;
 }
 
 std::string
 openssl_test_sha1(const std::string &message) {
-  unsigned char hash[SHA_DIGEST_LENGTH];
-  SHA1(reinterpret_cast<const unsigned char *>(message.data()),
-       message.length(), hash);
+	unsigned char hash[SHA_DIGEST_LENGTH];
+	SHA1(reinterpret_cast<const unsigned char *>(message.data()),
+	     message.length(), hash);
 
-  std::string hash_string = cripto::SHA1::toHexString(hash, SHA_DIGEST_LENGTH);
-  std::cout << "OpenSSL SHA1: " << hash_string << std::endl;
-  cripto::log_trace("OpenSSL SHA1: " + hash_string);
-  return hash_string;
+	std::string hash_string =
+	  cripto::SHA1::toHexString(hash, SHA_DIGEST_LENGTH);
+	std::cout << "OpenSSL SHA1: " << hash_string << std::endl;
+	cripto::log_trace("OpenSSL SHA1: " + hash_string);
+	return hash_string;
 }
 
 std::string
 read_file(const std::string &filename) {
-  std::ifstream file(filename);
-  if (!file.is_open()) {
-    throw std::runtime_error("Impossibile aprire il file: " + filename);
-  }
-  std::stringstream buffer;
-  buffer << file.rdbuf();
-  return buffer.str();
+	std::ifstream file(filename);
+	if (!file.is_open()) {
+		throw std::runtime_error("Impossibile aprire il file: " +
+					 filename);
+	}
+	std::stringstream buffer;
+	buffer << file.rdbuf();
+	return buffer.str();
 }
