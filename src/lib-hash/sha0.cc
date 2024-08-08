@@ -102,8 +102,8 @@ SHA0::transform(const uint8_t block[SHA0_BLOCK_SIZE]) {
 		       (block[i * 4 + 2] << 8) | block[i * 4 + 3];
 	}
 
-	// Espanzione delle parole in 80 parole da 32 bit
-	// a differenza di SHA1 non c'è bisogno di fare la rotazione
+	// Espanzione delle parole da 16 parole a 80 parole
+	// A differenza di SHA1 non c'è bisogno di fare la rotazione
 	for (int i = 16; i < 80; ++i) {
 		w[i] = w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16];
 	}

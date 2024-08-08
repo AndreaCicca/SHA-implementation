@@ -23,13 +23,13 @@ Queste funzioni sono utilizzate negli ambiti in cui ci sia la necessità di veri
 Dato un alfabeto $\mathfrak{A}$, indicheremo con $\mathfrak{A}^*$ l’insieme di tutte le stringhe finite di elementi di $\mathfrak{A}$
 
 \[
-\emptyset^* = \bigcup_{n \geq 1} \mathfrak{A}^n
+\mathfrak{A}^* = \bigcup_{n \geq 1} \mathfrak{A}^n
 \]
 
 Tipicamente $\mathfrak{A} = \{0, 1\}$, e quindi $\mathfrak{A}^*$ è l’insieme di tutte le stringhe composte da bit.
 
 \vspace{1cm}
-Una funzione hash è una funzione $h : \mathfrak{A}^* \rightarrow \mathfrak{B}^n$ che mappa stringhe di lunghezza arbitraria in stringhe di lunghezza fissa $n$ (per esempio n = 160)
+Una funzione hash è una funzione $h : \mathfrak{A}^* \rightarrow \mathfrak{A}^n$ che mappa stringhe di lunghezza arbitraria in stringhe di lunghezza fissa $n$ (per esempio n = 160)
 
 \end{frame}
 
@@ -77,7 +77,7 @@ I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può esser
 \frametitle{Secure Hash Algorithm: Funzionamento}
 \begin{itemize}
     \item \textbf{Padding}: il messaggio viene convertito in binario e viene aggiunto un bit 1 seguito da zeri fino a che la lunghezza del messaggio è congrua a 448 modulo 512.
-    \item \textbf{Lunghezza}: viene aggiunta la lunghezza del messaggio originale in binario a 64 bit.
+    \item \textbf{Lunghezza}: viene aggiunta la lunghezza del messaggio originale al temine del blocco.
     Al termine del primi 2 passaggi si avrà un messaggio con una lunghezza multipla di 512 bit.
     \item \textbf{Registri}: vengono inizializzati 5 registri da 32 bit con dei valori fissi.
     \begin{itemize}
