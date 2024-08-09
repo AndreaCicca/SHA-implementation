@@ -14,7 +14,7 @@
 namespace cripto {
 
 void
-init_logging(bool trace);
+init_logging(bool trace = false);
 
 void
 log_trace(const std::string &message);

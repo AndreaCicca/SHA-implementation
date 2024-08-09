@@ -4,12 +4,12 @@
 #include <random>
 
 namespace {
+
+static const std::string caratteri =
+  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
 std::string
 generaStringaCasuale(int lunghezza) {
-    // Definisco i caratteri possibili
-    const std::string caratteri =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
     std::random_device rd; // Generatore di numeri casuali basato su hardware
     std::mt19937       gen(rd()); // Mersenne Twister PRNG, rd è il seed
     std::uniform_int_distribution<> distribuzione(0, caratteri.size() - 1);
@@ -78,7 +78,7 @@ TEST(SHA1Test, RandomString) {
 
 int
 main(int argc, char **argv) {
-    cripto::init_logging(false);
+    cripto::init_logging();
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
