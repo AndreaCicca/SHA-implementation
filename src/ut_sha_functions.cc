@@ -11,7 +11,7 @@ generaStringaCasuale(int lunghezza) {
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     std::random_device rd; // Generatore di numeri casuali basato su hardware
-    std::mt19937       gen(rd()); // Mersenne Twister PRNG
+    std::mt19937       gen(rd()); // Mersenne Twister PRNG, rd è il seed
     std::uniform_int_distribution<> distribuzione(0, caratteri.size() - 1);
 
     std::string stringaCasuale;
