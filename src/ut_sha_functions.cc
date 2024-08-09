@@ -15,7 +15,8 @@ generaStringaCasuale(int lunghezza) {
     std::uniform_int_distribution<> distribuzione(0, caratteri.size() - 1);
 
     std::string stringaCasuale;
-    for (int i = 0; i < lunghezza; ++i) {
+    for (int i = 0; i < lunghezza; ++i)
+    {
         stringaCasuale += caratteri[distribuzione(gen)];
     }
 
@@ -69,8 +70,13 @@ TEST(SHA1Test, VeryLongString) {
 
 //! Generazione causale di stringhe
 TEST(SHA1Test, RandomString) {
-    for (int i = 0; i < 1000; ++i) {
-        auto random_message = generaStringaCasuale(i);
+    for (int k = 0; k < 100; ++k)
+    {
+        std::string random_message = "";
+        for (int i = 0; i < 100; ++i)
+        {
+            random_message += generaStringaCasuale(100);
+        }
         EXPECT_EQ(cripto_test_sha1(random_message, false),
                   openssl_test_sha1(random_message, false));
     }

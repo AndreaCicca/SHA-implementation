@@ -62,7 +62,8 @@ SHA1::SHA1()
 void
 SHA1::initialization(const uint8_t *data, size_t length) {
     // tutti i dati devono essere processati
-    while (length > 0) {
+    while (length > 0)
+    {
         // Quanti byte posso copiare nel buffer
         // minimo tra length e e lo spazio disponibile nel buffer.
         // Ci sono 2 casi possibili:
@@ -80,7 +81,8 @@ SHA1::initialization(const uint8_t *data, size_t length) {
         length = length - toCopy;
 
         // se il buffer è pieno allora lo si deve processare
-        if (bufferLength == SHA1_BLOCK_SIZE) {
+        if (bufferLength == SHA1_BLOCK_SIZE)
+        {
 
             // processamento del buffer
             transform(buffer);
@@ -102,13 +104,15 @@ SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
 
     // Conversione dei messaggi in 16 parole da 32 bit
     // 512 bit = 16 parole da 32 bit
-    for (int i = 0; i < 16; ++i) {
+    for (int i = 0; i < 16; ++i)
+    {
         w[i] = (block[i * 4] << 24) | (block[i * 4 + 1] << 16) |
                (block[i * 4 + 2] << 8) | block[i * 4 + 3];
     }
 
     // Espanzione delle parole da 16 parole a 80 parole
-    for (int i = 16; i < 80; ++i) {
+    for (int i = 16; i < 80; ++i)
+    {
         w[i] = leftRotate(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
     }
 
@@ -127,18 +131,23 @@ SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
     // | = OR
     // ~ = NOT 1 -> 0, 0 -> 1
 
-    for (int i = 0; i < 80; ++i) {
+    for (int i = 0; i < 80; ++i)
+    {
         uint32_t f, k;
-        if (i < 20) {
+        if (i < 20)
+        {
             f = (b & c) | ((~b) & d);
             k = 0x5A827999;
-        } else if (i < 40) {
+        } else if (i < 40)
+        {
             f = b ^ c ^ d;
             k = 0x6ED9EBA1;
-        } else if (i < 60) {
+        } else if (i < 60)
+        {
             f = (b & c) | (b & d) | (c & d);
             k = 0x8F1BBCDC;
-        } else {
+        } else
+        {
             f = b ^ c ^ d;
             k = 0xCA62C1D6;
         }
@@ -158,7 +167,8 @@ SHA1::transform(const uint8_t block[SHA1_BLOCK_SIZE]) {
     state[3] += d;
     state[4] += e;
 
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 5; ++i)
+    {
         cripto::log_trace("SHA1: State " + std::to_string(i) + " = " +
                           std::to_string(state[i]));
     }
@@ -176,7 +186,8 @@ SHA1::padding() {
     // Se la lunghezza del buffer con il bit aggiunto è maggiore di 448 bit
     // allora non ci sarà abbastanza spazio per aggiungere la lunghezza
     // di 64 bit del messaggio.
-    if (bufferLength > 56) {
+    if (bufferLength > 56)
+    {
         // Riepio il buffer con 0 fino a 512 bit
         std::memset(buffer + bufferLength, 0, SHA1_BLOCK_SIZE - bufferLength);
         // calcolo l'hash parziale del blocco
@@ -190,7 +201,8 @@ SHA1::padding() {
     // aggiunta della lunghezza del messaggio come un numero a 64 bit
     // alla fine del blocco
     // 448 + 64 = 512 bit
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 8; ++i)
+    {
         buffer[56 + i] = (bitCount >> ((7 - i) * 8)) & 0xFF;
     }
 
@@ -206,7 +218,8 @@ void
 SHA1::final(uint8_t digest[SHA1_DIGEST_SIZE]) {
     padding();
 
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 5; ++i)
+    {
         digest[i * 4]     = (state[i] >> 24) & 0xFF;
         digest[i * 4 + 1] = (state[i] >> 16) & 0xFF;
         digest[i * 4 + 2] = (state[i] >> 8) & 0xFF;
@@ -225,7 +238,8 @@ std::string
 SHA1::toHexString(const uint8_t *digest, size_t length) {
     std::stringstream ss;
     ss << std::hex << std::setfill('0');
-    for (size_t i = 0; i < length; ++i) {
+    for (size_t i = 0; i < length; ++i)
+    {
         ss << std::setw(2) << static_cast<unsigned int>(digest[i]);
     }
     return ss.str();

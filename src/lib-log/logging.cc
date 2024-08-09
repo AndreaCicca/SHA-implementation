@@ -28,9 +28,7 @@ set_log_level(logging::trivial::severity_level level) {
 
 void
 init_logging(bool trace) {
-    logging::register_simple_formatter_factory<logging::trivial::severity_level,
-                                               char>("Severity");
-
+    // Inizializzazione del logging e configurazione del file di log
     logging::add_file_log(
       keywords::file_name     = "logging_%N.log",
       keywords::rotation_size = 10 * 1024 * 1024,
@@ -38,9 +36,12 @@ init_logging(bool trace) {
         logging::sinks::file::rotation_at_time_point(0, 0, 0),
       keywords::format = "[%TimeStamp%] [%Severity%] %Message%");
 
-    if (trace) {
+    // Impostazione del filtro di logging
+    if (trace)
+    {
         set_log_level(logging::trivial::trace);
-    } else {
+    } else
+    {
         set_log_level(logging::trivial::info);
     }
 

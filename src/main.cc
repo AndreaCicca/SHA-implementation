@@ -28,7 +28,8 @@ main() {
       "Nel mezzo del cammin di nostra vita mi ritrovai per una selva "
       "oscura"};
 
-    for (const auto &test : test_cases) {
+    for (const auto &test : test_cases)
+    {
         std::cout << "Testing message: \"" << test << "\"" << std::endl;
         cripto::log_trace("Testing message: \"" + test + "\"");
         (void)cripto_test_sha1(test, true);
@@ -37,13 +38,15 @@ main() {
     }
 
     // commedia.txt
-    try {
+    try
+    {
         std::string commedia_content = read_file("commedia.txt");
         std::cout << "Calcolo hash di commedia.txt" << std::endl;
         cripto::log_trace("Calcolo hash di commedia.txt");
         (void)cripto_test_sha1(commedia_content, true);
         (void)openssl_test_sha1(commedia_content, true);
-    } catch (const std::exception &e) {
+    } catch (const std::exception &e)
+    {
         std::cerr << "Errore: " << e.what() << std::endl;
         cripto::log_error("Errore durante la lettura di commedia.txt: " +
                           std::string(e.what()));

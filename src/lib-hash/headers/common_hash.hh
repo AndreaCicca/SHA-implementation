@@ -39,7 +39,8 @@ cripto_test_sha1(const std::string &message, const bool isPrintable = true) {
     // Converto il digest in una stringa esadecimale
     std::string result =
       cripto::SHA1::toHexString(digest, cripto::SHA1_DIGEST_SIZE);
-    if (isPrintable) {
+    if (isPrintable)
+    {
         std::cout << "Cripto  SHA1: " << result << std::endl;
         cripto::log_trace("Cripto  SHA1: " + result);
     }
@@ -64,7 +65,8 @@ cripto_test_sha0(const std::string &message, const bool isPrintable = true) {
     // Converto il digest in una stringa esadecimale
     std::string result =
       cripto::SHA0::toHexString(digest, cripto::SHA0_DIGEST_SIZE);
-    if (isPrintable) {
+    if (isPrintable)
+    {
         std::cout << "Cripto  SHA0: " << result << std::endl;
         cripto::log_trace("Cripto  SHA0: " + result);
     }
@@ -79,7 +81,8 @@ openssl_test_sha1(const std::string &message, const bool isPrintable = true) {
 
     std::string hash_string =
       cripto::SHA1::toHexString(hash, SHA_DIGEST_LENGTH);
-    if (isPrintable) {
+    if (isPrintable)
+    {
         std::cout << "OpenSSL SHA1: " << hash_string << std::endl;
         cripto::log_trace("OpenSSL SHA1: " + hash_string);
     }
@@ -89,7 +92,8 @@ openssl_test_sha1(const std::string &message, const bool isPrintable = true) {
 std::string
 read_file(const std::string &filename) {
     std::ifstream file(filename);
-    if (!file.is_open()) {
+    if (!file.is_open())
+    {
         throw std::runtime_error("Impossibile aprire il file: " + filename);
     }
     std::stringstream buffer;
