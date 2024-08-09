@@ -20,15 +20,20 @@ Installazione di conan:
 pip install conan
 ```
 
+Creazopme del profilo di conan necessario per la compilazione del progetto:
+
+```bash
+conan profile detect
+```
+
 Compilazione del progetto e installazione delle dipendenze:
 
 ```bash
-cd src
-mkdir build
-conan profile detect
-conan install . --output-folder=build --build=missing
-cd build
-cmake .. --preset conan-release
+cd src &&
+mkdir build &&
+conan install . --output-folder=build --build=missing &&
+cd build &&
+cmake .. --preset conan-release &&
 cmake --build .
 ```
 
