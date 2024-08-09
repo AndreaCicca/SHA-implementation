@@ -1,0 +1,55 @@
+\section{Utilizzi funzioni hash}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Quali utilizzi ci sono per le funzioni hash}
+\begin{itemize}
+    \item \textbf{Message fingerprint} (integrità dei dati)
+    \item \textbf{Password hashing}
+    \item \textbf{Digital signature} (solo dell'hash)
+    \item \textbf{Entity Authentication/Identification} (meccanismo challenge-response)
+    \item \textbf{Message Authentication} (MAC)
+    \item \textbf{Encryption} (pseudorandom bit stream)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Message Authentication Code (MAC)}
+
+Il MAC (Message Authentication Code) è simile a una firma digitale. 
+Quando si riceve un messaggio, si eseguono delle computazioni sul messaggio ricevuto e \textbf{si confronta il risultato con il MAC ricevuto}.
+
+\begin{itemize}
+    \item Conoscendo il MAC di un messaggio, è impossibile generare un altro messaggio con lo stesso MAC.
+    \item È impossibile trovare due messaggi con lo stesso MAC.
+    \item I MAC sono distribuiti uniformemente.
+    \item Il MAC deve dipendere da ogni bit del messaggio.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{H-MAC}
+
+MAC viene generato tramite un meccanismo di crittografia simmetrica, ma esistono anche soluzioni come H-MAC 
+che sfruttano una funzione hash.
+
+\vspace{1cm}
+
+H-MAC esegue una funzione di hash due o tre volte a partire da una stessa chiave. In teoria, HMAC potrebbe essere 
+calcolato con qualsiasi funzione hash, anche se in pratica si utilizzano quasi sempre SHA-1 o MD5 (entrambi obsoleti).
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{H-MAC Parte 2}
+
+H-MAC viene aclcolato a blocchi e a seconda della chiave K bisognerà adattarla alla lunghezza del blocco.
+
+\[
+\text{HMAC}(K, M') = H((K' \oplus \text{opad}) \| H((K' \oplus \text{ipad}) \| M'))
+\]
+
+Dove $K'$, $\text{opad}$ e $\text{ipad}$ sono costanti.
+
+\end{frame}
