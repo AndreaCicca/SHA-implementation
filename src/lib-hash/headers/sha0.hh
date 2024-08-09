@@ -15,24 +15,24 @@
 
 namespace cripto {
 
-constexpr unsigned int SHA0_BLOCK_SIZE	= 64; // 512 bits
+constexpr unsigned int SHA0_BLOCK_SIZE  = 64; // 512 bits
 constexpr unsigned int SHA0_DIGEST_SIZE = 20; // 160 bits
 
 class SHA0 {
-      public:
-	SHA0();
-	void		   initialization(const uint8_t *data, size_t length);
-	void		   final(uint8_t digest[SHA0_DIGEST_SIZE]);
-	static std::string toHexString(const uint8_t *digest, size_t length);
+  public:
+    SHA0();
+    void               initialization(const uint8_t *data, size_t length);
+    void               final(uint8_t digest[SHA0_DIGEST_SIZE]);
+    static std::string toHexString(const uint8_t *digest, size_t length);
 
-      private:
-	void transform(const uint8_t block[SHA0_BLOCK_SIZE]);
-	void padding();
+  private:
+    void transform(const uint8_t block[SHA0_BLOCK_SIZE]);
+    void padding();
 
-	uint32_t state[5];
-	uint64_t bitCount;
-	uint8_t	 buffer[SHA0_BLOCK_SIZE];
-	size_t	 bufferLength;
+    uint32_t state[5];
+    uint64_t bitCount;
+    uint8_t  buffer[SHA0_BLOCK_SIZE];
+    size_t   bufferLength;
 };
 
 } // namespace cripto
