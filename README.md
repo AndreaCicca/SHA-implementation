@@ -9,7 +9,7 @@ Prima di clonare e compilare il progetto accertarsi di avere a disposizione un c
 ## Clonazione locale del progetto ed installazione di Conan
 
 ```bash
-git clone https://github.com/AndreaCicca/crittografia-progetto
+git clone https://github.com/AndreaCicca/crittografia-SHA
 ```
 
 Documentazione per Conan -> [Link](https://conan.io/downloads).
