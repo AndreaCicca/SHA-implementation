@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-conan profile detect
+conan profile detect --force
