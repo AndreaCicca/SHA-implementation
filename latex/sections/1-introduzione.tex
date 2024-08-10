@@ -6,9 +6,10 @@
 \begin{frame}
 \frametitle{Le funzioni di hash}
 
+Le moderne funzioni di hash nascono alla fine del 20° secolo per risolvere il problema dell'\textbf{integrità dei dati} che devono
+essere scambiati su \textbf{un mezzo insicuro}, concetto che diventerà sempre più importante con l'avvento di internet. 
 Una funzione di hash prende in input un messaggio di lunghezza arbitraria e restituisce un valore di lunghezza prefissata chiamata hash o digest.
 
-Queste funzioni sono utilizzate negli ambiti in cui ci sia la necessità di verificare l'integrità dei dati.
 \vspace{1cm}
 \begin{center}
     \includegraphics[width=0.5\textwidth]{img/1-img/hash-function.jpeg}
@@ -74,12 +75,11 @@ I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può esser
 \end{frame}
 
 \begin{frame}
-\frametitle{Secure Hash Algorithm: Funzionamento}
+\frametitle{Secure Hash Algorithm: Fasi}
 \begin{itemize}
-    \item \textbf{Padding}: il messaggio viene convertito in binario e viene aggiunto un bit 1 seguito da zeri fino a che la lunghezza del messaggio è congrua a 448 modulo 512.
-    \item \textbf{Lunghezza}: viene aggiunta la lunghezza del messaggio originale al temine del blocco.
-    Al termine del primi 2 passaggi si avrà un messaggio con una lunghezza multipla di 512 bit.
-    \item \textbf{Registri}: vengono inizializzati 5 registri da 32 bit con dei valori fissi.
+    \item \textbf{Suddivisione del messaggio}: L'input viene suddiviso in blocchi di 512 bit, in caso di messaggi 
+    più corti di 56 byte viene aggiunto un padding. 
+    \item \textbf{funzione di compressione}: In input ci sono 5 registri con lo stato intermedio e il blocco di 512 bit.
     \begin{itemize}
         \item A = 67452301
         \item B = EFCDAB89
