@@ -31,8 +31,8 @@ class SHA0 {
 
     uint32_t state[5];
     uint64_t bitCount;
-    uint8_t  buffer[SHA0_BLOCK_SIZE];
     size_t   bufferLength;
+    uint8_t  buffer[SHA0_BLOCK_SIZE];
 };
 
 } // namespace cripto

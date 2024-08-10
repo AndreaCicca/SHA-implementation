@@ -32,6 +32,11 @@ class SHA1 {
     //! I 5 registri di stato inizializzati con i valori iniziali
     //! specificati dallo standard.
     uint32_t state[5];
+
+    //! Tiene traccia del numero di bit processati fino a questo momento,
+    //! nel momento in cui si fa
+    uint64_t bitCount;
+
     /**
      * @brief Lunghezza corrente del buffer interno per accumulare i dati
      * prima di processarlo Quando si raggiungono i 64 byte (512 bit) il
@@ -41,10 +46,6 @@ class SHA1 {
      * standard.
      */
     size_t bufferLength;
-
-    //! Tiene traccia del numero di bit processati fino a questo momento,
-    //! nel momento in cui si fa
-    uint64_t bitCount;
     uint8_t  buffer[SHA1_BLOCK_SIZE];
 };
 
