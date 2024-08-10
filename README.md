@@ -7,7 +7,7 @@ di avere un ambiente python, un compilatore C++17 e Cmake.
 ## Clonazione locale del progetto ed installazione di Conan
 
 ```bash
-git clone https://github.com/AndreaCicca/crittografia-SHA
+https://github.com/AndreaCicca/SHA-implementation
 ```
 
 Documentazione per Conan -> [Link](https://conan.io/downloads).
