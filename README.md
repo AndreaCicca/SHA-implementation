@@ -4,6 +4,8 @@ Implementazione di una funzione di hash Sha1 in C++
 
 Il progetto sfrutta Conan per le dipendenze e Cmake come toolchain di compilazione del progetto.
 
+Prima di clonare e compilare il progetto accertarsi di avere a disposizione un compilatore c++ e cmake.
+
 ## Clonazione locale del progetto ed installazione di Conan
 
 ```bash
