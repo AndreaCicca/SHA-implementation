@@ -1,10 +1,8 @@
-# Italian: Progetto corso Crittografia 
+# Italian: Progetto corso Crittografia (Unipr)
 
-Implementazione di una funzione di hash Sha1 in C++
-
-Il progetto sfrutta Conan per le dipendenze e Cmake come toolchain di compilazione del progetto.
-
-Prima di clonare e compilare il progetto accertarsi di avere a disposizione un compilatore c++ e cmake.
+In questo progetto è stata effettuata la reimplementazione dell'algoritmo SHA1 tramite il linguaggio C++17.
+La maggior parte delle dipendenze vengono gestite tramite il package manager Conan, per poter la compilazione c'è bisogno soltanto 
+di avere un ambiente python, un compilatore C++17 e Cmake.
 
 ## Clonazione locale del progetto ed installazione di Conan
 
