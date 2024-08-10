@@ -21,7 +21,7 @@ pip install conan
 Creazopme del profilo di conan necessario per la compilazione del progetto:
 
 ```bash
-conan profile detect
+conan profile detect --force
 ```
 
 ## Installazione delle dipendenze e compilazione del progetto.
