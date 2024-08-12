@@ -4,12 +4,31 @@
 %------------------------------------------------
 
 \begin{frame}
+\frametitle{Argomenti trattati in questa presentazione}
+
+\begin{enumerate}
+    \item \textbf{Introduzione}
+    \item \textbf{Funzioni di hash}
+    \item \textbf{Secure Hash Algorithm}
+    \item \textbf{Attacchi a SHA1}
+    \item \textbf{Appendici}
+\end{enumerate}
+
+\vspace{1cm}
+
+Progetto per il corso di crittografia:
+\begin{itemize}
+    \item Implementazione di SHA-1 in C++
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Le funzioni di hash}
 
 Le moderne funzioni di hash nascono alla fine del 20° secolo per risolvere il problema dell'\textbf{integrità dei dati} che devono
 essere scambiati su \textbf{un mezzo insicuro}, concetto che diventerà sempre più importante con l'avvento di internet. 
-Una funzione di hash prende in input un messaggio di lunghezza arbitraria e restituisce un valore di lunghezza prefissata chiamata hash o digest.
-
 \vspace{1cm}
 \begin{center}
     \includegraphics[width=0.5\textwidth]{img/1-img/hash-function.jpeg}
@@ -44,6 +63,7 @@ Una funzione hash è una funzione $h : \mathfrak{A}^* \rightarrow \mathfrak{A}^n
     \item \textbf{Difficoltà di inversione}: data l'uscita della funzione è computazionalmente difficile trovare l'input.
     \item \textbf{Effetto valanga}: piccole variazioni nell'input devono produrre grandi variazioni nell'output.
     \item \textbf{Resistenza alle collisioni}: è computazionalmente difficile trovare due input diversi che producano lo stesso output.
+    \item \textbf{Effetto valanga}: piccole variazioni nell'input devono produrre grandi variazioni nell'output.
 \end{itemize}
 \end{frame}
 
@@ -71,11 +91,11 @@ per correggere un difetto nell'algoritmo originale.
 
 \vspace{1cm}
 
-I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può essere al massimo di \(2^{64} - 1\) bit.
+I digest prodotti da SHA-1 sono di \textbf{160 bit}.
 \end{frame}
 
 \begin{frame}
-\frametitle{Secure Hash Algorithm: Fasi}
+\frametitle{Secure Hash Algorithm: Caratteristiche fondamentali}
 \begin{itemize}
     \item \textbf{Suddivisione del messaggio}: L'input viene suddiviso in blocchi di 512 bit, in caso di messaggi 
     più corti di 56 byte viene aggiunto un padding. 
@@ -92,7 +112,7 @@ I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può esser
 
 
 \begin{frame}
-\frametitle{Secure Hash Algorithm: Funzionamento P2}
+\frametitle{Secure Hash Algorithm: Elaborazione dei blocchi}
 \begin{itemize}
     \item \textbf{Elaborazione dei blocchi}: 
     \begin{itemize}
@@ -104,38 +124,5 @@ I digest prodotti da SHA-1 sono di \textbf{160 bit}, e ogni messaggio può esser
 
 \begin{center}
     \includegraphics[width=0.4\textwidth]{img/1-img/SHA-1.png}
-\end{center}
-\end{frame}
-
-\begin{frame}
-\frametitle{Secure Hash Algorithm: Funzionamento P3}
-
-Ogni iterazione usa una funzione non lineare (\textit{f}) e una costante (\textit{k}) che varia a seconda dell'intervallo di iterazione.
-La costante k viene successivamente utilizzata all'interno della funzione di compressione.
-
-\begin{itemize}
-    \item \textbf{Iterazioni 0-19}: \textit{f = (b and c) or (not b and d)} con \textit{k = 0x5A827999}
-    \item \textbf{Iterazioni 20-39}: \textit{f = b xor c xor d} con \textit{k = 0x6ED9EBA1}
-    \item \textbf{Iterazioni 40-59}: \textit{f = (b and c) or (b and d) or (c and d)} con \textit{k = 0x8F1BBCDC}
-    \item \textbf{Iterazioni 60-79}: \textit{f = b xor c xor d} con \textit{k = 0xCA62C1D6}
-  \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Firma digitale con PGP}
-PGP calcola un hash dal testo in chiaro, e crea poi da questo hash la firma digitale usando la  \textbf{chiave privata del mittente}.
-\begin{center}
-    \includegraphics[width=0.5\textwidth]{img/1-img/PGP_diagram_IT.png}
-\end{center}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Firma digitale con PGP Parte 2}
-Il destinatario del messaggio calcola il message digest dal testo in chiaro decifrato, e poi usa la \textbf{chiave pubblica del mittente} ed il valore del message digest e la firma.
-In questo modo si può verificare che il messaggio non sia stato alterato e che sia stato inviato dal mittente.
-
-\begin{center}
-    \includegraphics[width=0.5\textwidth]{img/1-img/PGP_diagram_IT.png}
 \end{center}
 \end{frame}
