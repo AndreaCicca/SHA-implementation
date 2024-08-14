@@ -164,10 +164,10 @@
 
 \begin{frame}
 
-	\begin{figure}
+        \begin{figure}
 		\includegraphics[width=0.25\linewidth]{img/logo-unipr/Logo unipr.png}
 	\end{figure}
-
+ 
 	\titlepage % Output the title slide, automatically created using the text entered in the PRESENTATION INFORMATION block above
 \end{frame}
 
@@ -184,13 +184,13 @@
 %	CLOSING SLIDE
 %----------------------------------------------------------------------------------------
 
-\begin{frame}[plain]
-	\begin{center}
+\begin{frame}[plain] 
+    \begin{center}
 		{\Huge Riferimento a fonti esterne:}
-
+            
 	\end{center}
 	\begin{itemize}
-		\item \href{https://csrc.nist.gov/pubs/fips/180-4/upd1/final}{Link al documento NIST FIPS 180-4}
+	    \item \href{https://csrc.nist.gov/pubs/fips/180-4/upd1/final}{Link al documento NIST FIPS 180-4}
 		\item \href{https://shattered.io}(Google SHA-1 collision: shattered)
 		\item \href{https://shattered.io/static/shattered.pdf}{The first collision for full SHA-1}
 	\end{itemize}
@@ -199,4 +199,4 @@
 
 %----------------------------------------------------------------------------------------
 
-\end{document}
+\end{document} 
