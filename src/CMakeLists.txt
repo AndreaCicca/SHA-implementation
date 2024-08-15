@@ -15,36 +15,20 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
 
-# Includi la cartella headers per cercare i file di intestazione
-include_directories(lib-hash/headers)
-include_directories(lib-log/headers)
-
-file(GLOB LIB_SOURCES "lib-hash/*.cc")
-file(GLOB LIB_LOG_SOURCES "lib-log/*.cc")
-
-# Aggiungi librerie
-add_library(hash-lib ${LIB_SOURCES})
-add_library(logging-lib ${LIB_LOG_SOURCES})
-
 # Trova le librerie installate tramite conan
-find_package(Boost)
+find_package(Boost REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(GTest REQUIRED)
+
+# Aggiungi le sottodirectory
+add_subdirectory(lib-hash)
+add_subdirectory(lib-log)
 
 # Aggiungi l'eseguibile principale
 add_executable(${PROJECT_NAME} main.cc)
 add_executable(ut_sha_functions ut_sha_functions.cc)
 
-# Linka la librerie
-
-target_link_libraries(logging-lib PRIVATE 
-    boost::boost
-)
-
-target_link_libraries(hash-lib PRIVATE 
-    logging-lib
-)
-
+# Linka le librerie
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     hash-lib
     logging-lib
@@ -58,7 +42,6 @@ target_link_libraries(ut_sha_functions PRIVATE
     openssl::openssl
     gtest::gtest
 )
-
 
 # Copia il file commedia.txt
 configure_file(${CMAKE_SOURCE_DIR}/commedia.txt ${CMAKE_BINARY_DIR}/commedia.txt COPYONLY)
