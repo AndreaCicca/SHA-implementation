@@ -188,6 +188,7 @@ SHA1::padding() {
     // di 64 bit del messaggio.
     if (bufferLength > 56)
     {
+        cripto::log_trace("SHA1: Ultimo blocco non rispetta 448 mod 512");
         // Riepio il buffer con 0 fino a 512 bit
         std::memset(buffer + bufferLength, 0, SHA1_BLOCK_SIZE - bufferLength);
         // calcolo l'hash parziale del blocco

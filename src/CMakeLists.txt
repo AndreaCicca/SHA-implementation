@@ -3,10 +3,6 @@ cmake_minimum_required(VERSION 3.28)
 # Nome del progetto
 project(cripto_project)
 
-if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Release)
-endif()
-
 # Impostazioni cmake
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -58,6 +54,5 @@ target_link_libraries(ut_sha_functions PRIVATE
 )
 
 
-
-
+# Copia il file commedia.txt
 configure_file(${CMAKE_SOURCE_DIR}/commedia.txt ${CMAKE_BINARY_DIR}/commedia.txt COPYONLY)
