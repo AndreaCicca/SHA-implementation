@@ -13,9 +13,24 @@
 #include "logging.hh"
 
 int
-main() {
+main(int argc, char *argv[]) {
 
-    cripto::init_logging(true);
+    // Variabile booleana per l'attivazione del logging a livello trace
+    bool init_trace = false;
+
+    if (argc > 1)
+    {
+        // Verifica se il primo argomento è "-t"
+        std::string arg1 = argv[1];
+        if (arg1 == "-t")
+        {
+            std::cout << "\n !! Attivazione del logging a livello trace !!"
+                      << std::endl;
+            init_trace = true;
+        }
+    }
+
+    cripto::init_logging(init_trace);
 
     std::vector<std::string> test_cases = {
       "",
@@ -32,8 +47,8 @@ main() {
     {
         std::cout << "Testing message: \"" << test << "\"" << std::endl;
         cripto::log_trace("Testing message: \"" + test + "\"");
-        (void)cripto_test_sha1(test, true);
-        (void)openssl_test_sha1(test, true);
+        (void)cripto_test_sha1(test);
+        (void)openssl_test_sha1(test);
         std::cout << std::endl;
     }
 
@@ -42,9 +57,10 @@ main() {
     {
         std::string commedia_content = read_file("commedia.txt");
         std::cout << "Calcolo hash di commedia.txt" << std::endl;
-        cripto::log_trace("Calcolo hash di commedia.txt");
-        (void)cripto_test_sha1(commedia_content, true);
-        (void)openssl_test_sha1(commedia_content, true);
+        cripto::log_trace(
+          "Calcolo hash di della Divina Commedia, dentro a commedia.txt");
+        (void)cripto_test_sha1(commedia_content);
+        (void)openssl_test_sha1(commedia_content);
     } catch (const std::exception &e)
     {
         std::cerr << "Errore: " << e.what() << std::endl;

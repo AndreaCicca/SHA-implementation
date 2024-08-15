@@ -63,21 +63,25 @@ log_info(const std::string &message) {
 void
 log_error(const std::string &message) {
     BOOST_LOG_TRIVIAL(error) << message << std::flush;
+    std::cerr << message << std::endl;
 }
 
 void
 log_warning(const std::string &message) {
     BOOST_LOG_TRIVIAL(warning) << message << std::flush;
+    std::cerr << message << std::endl;
 }
 
 void
 log_debug(const std::string &message) {
     BOOST_LOG_TRIVIAL(debug) << message << std::flush;
+    std::cerr << message << std::endl;
 }
 
 void
 log_fatal(const std::string &message) {
     BOOST_LOG_TRIVIAL(fatal) << message << std::flush;
+    std::cerr << message << std::endl;
 }
 
 } // namespace cripto

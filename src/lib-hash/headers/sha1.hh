@@ -45,8 +45,8 @@ class SHA1 {
      * @note Il buffer è di 64 byte (512 bit) come specificato dallo
      * standard.
      */
-    size_t bufferLength;
-    uint8_t  buffer[SHA1_BLOCK_SIZE];
+    size_t  bufferLength;
+    uint8_t buffer[SHA1_BLOCK_SIZE];
 };
 
 } // namespace cripto

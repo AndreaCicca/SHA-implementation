@@ -82,6 +82,49 @@ TEST(SHA1Test, RandomString) {
     }
 }
 
+//! Test determinismo con la stessa stringa
+TEST(SHA1Test, Determinism) {
+    std::string message = "Hello, World!";
+    auto        digest  = cripto_test_sha1(message, false);
+
+    for (int i = 0; i < 10; ++i)
+    {
+        EXPECT_EQ(digest, cripto_test_sha1(message, false));
+        EXPECT_EQ(digest, openssl_test_sha1(message, false));
+    }
+}
+
+//! Test effetto a valanga
+TEST(SHA1Test, AvalancheEffect) {
+    std::string message = "Hello, World!";
+    auto        digest  = cripto_test_sha1(message, false);
+
+    for (size_t i = 0; i < message.size(); ++i)
+    {
+        std::string modified_message = message;
+        modified_message[i]          = 'a';
+        EXPECT_NE(digest, cripto_test_sha1(modified_message, false));
+        EXPECT_NE(digest, openssl_test_sha1(modified_message, false));
+    }
+}
+
+//! Performance
+TEST(SHA1Test, Performance) {
+    std::string message(1000000, 'a'); // Stringa di un milione di 'a'
+
+    auto start = std::chrono::high_resolution_clock::now();
+    cripto_test_sha1(message, false);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto duration =
+      std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+        .count();
+    cripto::log_info("SHA1: Performance test completed in " +
+                     std::to_string(duration) + " ms");
+
+    EXPECT_LT(duration, 1000);
+}
+
 int
 main(int argc, char **argv) {
     cripto::init_logging();

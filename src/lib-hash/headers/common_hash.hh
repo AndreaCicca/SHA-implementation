@@ -24,6 +24,7 @@
 
 std::string
 cripto_test_sha1(const std::string &message, const bool isPrintable = true) {
+
     uint8_t digest[cripto::SHA1_DIGEST_SIZE];
 
     cripto::SHA1 sha1;
@@ -50,6 +51,7 @@ cripto_test_sha1(const std::string &message, const bool isPrintable = true) {
 
 std::string
 cripto_test_sha0(const std::string &message, const bool isPrintable = true) {
+
     uint8_t digest[cripto::SHA0_DIGEST_SIZE];
 
     cripto::SHA0 sha0;
