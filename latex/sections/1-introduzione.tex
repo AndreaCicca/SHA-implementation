@@ -94,20 +94,6 @@
 	I digest prodotti da SHA-1 sono di \textbf{160 bit} e al massimo può elaborare messaggi di \textbf{2\textsuperscript{64} - 1} bit.
 \end{frame}
 
-\begin{frame}
-	\frametitle{Secure Hash Algorithm: Merkle-Damgård}
-
-	Le funzioni di hash come SHA-1, MD5 e SHA-2 sono basate sul costrutto di \textbf{Merkle-Damgård}, essi dimostrarono in modo indipndente
-	che utilizando \textbf{un appropriato schema di padding} e la funzione di compressione è \textbf{resistente alle collisioni}, allora anche la \textbf{funzione di hash è resistente alle collisioni}.
-
-	\vspace{1cm}
-
-	L'innput viene diviso in \textbf{blocchi da 512} bit che vengono processati uno alla volta.
-	Per fare in modo che la costruzione risultasse sicura, Merkle e Damgård proposero di
-	riempire i messaggi con un padding che codificasse la lunghezza del messaggio originario (\textbf{rafforzamento di Merkle-Damgård}).
-
-\end{frame}
-
 
 \begin{frame}
 	\frametitle{Secure Hash Algorithm: costruzione Merkle-Damgård}
@@ -117,6 +103,19 @@
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{img/1-img/Merkle-Damgard.png}
 	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Secure Hash Algorithm: Merkle-Damgård}
+
+	Nel caso di SHA-1 l'input viene diviso in \textbf{blocchi da 512} bit che vengono processati uno alla volta.
+	
+	\vspace{1cm}
+
+
+	Per fare in modo che la costruzione risultasse sicura, Merkle e Damgård proposero di
+	riempire i messaggi con un padding che codificasse la lunghezza del messaggio originario (\textbf{rafforzamento di Merkle-Damgård}).
 \end{frame}
 
 \begin{frame}
