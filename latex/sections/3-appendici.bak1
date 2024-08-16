@@ -76,39 +76,39 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Generazione della Firma Digitale con PGP}
-
-	\begin{columns}
-		% Colonna a sinistra (Testo)
-		\begin{column}{0.4\textwidth}
-			PGP calcola un hash dal testo in chiaro, e crea poi da questo hash la firma digitale usando la \textbf{chiave privata del mittente}.
-		\end{column}
-
-		% Colonna a destra (Immagine)
-		\begin{column}{0.6\textwidth}
-			\includegraphics[width=\textwidth]{img/1-img/PGP_diagram_IT.png}
-		\end{column}
-	\end{columns}
-
+    \frametitle{Generazione della Firma Digitale con PGP}
+    
+    \begin{columns}
+        % Colonna a sinistra (Testo)
+        \begin{column}{0.4\textwidth}
+            PGP calcola un hash dal testo in chiaro, e crea poi da questo hash la firma digitale usando la \textbf{chiave privata del mittente}.
+        \end{column}
+        
+        % Colonna a destra (Immagine)
+        \begin{column}{0.6\textwidth}
+            \includegraphics[width=\textwidth]{img/1-img/PGP_diagram_IT.png}
+        \end{column}
+    \end{columns}
+    
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Verifica della Firma Digitale con PGP}
-
-	\begin{columns}
-		% Colonna a sinistra (Testo)
-		\begin{column}{0.4\textwidth}
-			Il destinatario del messaggio calcola il message digest dal testo in chiaro decifrato, e poi usa la \textbf{chiave pubblica del mittente} per decifrare la firma digitale. \\
-			Si può verificare la non alterazione del messaggio e l'autenticità del mittente.
-		\end{column}
-
-		% Colonna a destra (Immagine)
-		\begin{column}{0.6\textwidth}
-			\includegraphics[width=\textwidth]{img/1-img/PGP_diagram_IT.png}
-		\end{column}
-	\end{columns}
-
+    \frametitle{Verifica della Firma Digitale con PGP}
+    
+    \begin{columns}
+        % Colonna a sinistra (Testo)
+        \begin{column}{0.4\textwidth}
+            Il destinatario del messaggio calcola il message digest dal testo in chiaro decifrato, e poi usa la \textbf{chiave pubblica del mittente} per decifrare la firma digitale. \\
+            Si può verificare la non alterazione del messaggio e l'autenticità del mittente.
+        \end{column}
+        
+        % Colonna a destra (Immagine)
+        \begin{column}{0.6\textwidth}
+            \includegraphics[width=\textwidth]{img/1-img/PGP_diagram_IT.png}
+        \end{column}
+    \end{columns}
+    
 \end{frame}
 
 

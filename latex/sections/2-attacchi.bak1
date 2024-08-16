@@ -4,15 +4,15 @@
 
 \begin{frame}
 	\frametitle{Attacco ad estensione di lunghezza}
-
+	
 	Se un attaccante conosce l'ash del messaggio \( h(m) \) può calcolare \( h(m || m') \) dove \( m' \) è un \textbf{messaggio arbitrario}.
 	la struttura di Merkle-Damgård permette di riutilizzare l'hash intermedio come se fosse l'IV per calcolare l'hash esteso.
 
 	\vspace{1cm}
 
 	\[
-		H(m \parallel m') = H'(h, m'')
-	\]
+H(m \parallel m') = H'(h, m'')
+\]
 
 \end{frame}
 

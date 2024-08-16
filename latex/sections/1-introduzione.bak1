@@ -101,34 +101,34 @@
 	di compressione resistente alle collisioni per creare una funzione di hash resistente alle collisioni.
 
 	\vspace{1cm}
-
+	
 	L'innput viene diviso in \textbf{blocchi da 512} bit che vengono processati uno alla volta.
-	Per fare in modo che la costruzione risultasse sicura, Merkle e Damgård proposero di
+	Per fare in modo che la costruzione risultasse sicura, Merkle e Damgård proposero di 
 	riempire i messaggi con un padding che codificasse la lunghezza del messaggio originario (\textbf{rafforzamento di Merkle-Damgård}).
 
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Secure Hash Algorithm: Elaborazione dei blocchi}
-
-	\begin{columns}
-		% Colonna a sinistra (Elenco)
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item \textbf{Elaborazione dei blocchi tramite la funzione F}:
-				      \begin{itemize}
-					      \item F si occupa di trasformare 2 input di lunghezza fissa (blocco e stato) in un output di lunghezza fissa.
-					      \item L'algoritmo parte con un vettore di inizializzazione VI di 160 bit.
-					      \item In SHA-1 prima di elaborare il blocco esso viene suddiviso ed espanso in 80 parole da 32 bit.
-				      \end{itemize}
-			\end{itemize}
-		\end{column}
-
-		% Colonna a destra (Immagine)
-		\begin{column}{0.4\textwidth}
-			\includegraphics[width=\textwidth]{img/1-img/SHA-1.png}
-		\end{column}
-	\end{columns}
-
+    \frametitle{Secure Hash Algorithm: Elaborazione dei blocchi}
+    
+    \begin{columns}
+        % Colonna a sinistra (Elenco)
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{Elaborazione dei blocchi tramite la funzione F}:
+                \begin{itemize}
+                    \item F si occupa di trasformare 2 input di lunghezza fissa (blocco e stato) in un output di lunghezza fissa.
+                    \item L'algoritmo parte con un vettore di inizializzazione VI di 160 bit.
+                    \item In SHA-1 prima di elaborare il blocco esso viene suddiviso ed espanso in 80 parole da 32 bit.
+                \end{itemize}
+            \end{itemize}
+        \end{column}
+        
+        % Colonna a destra (Immagine)
+        \begin{column}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{img/1-img/SHA-1.png}
+        \end{column}
+    \end{columns}
+    
 \end{frame}
