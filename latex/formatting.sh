@@ -19,3 +19,12 @@ do
 done
 
 echo "Operazione completata"
+
+echo "rimozione del file *.bak[0-9]*"
+
+find . -type f -name "*.bak[0-9]*" | while read -r file
+
+do
+    echo "Rimozione del file $file"
+    rm "$file"
+done
