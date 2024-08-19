@@ -2,7 +2,7 @@
 
 Corso di Crittografia presso Unipr.
 
-In questo progetto è stata effettuata la reimplementazione dell'algoritmo SHA1-0 tramite il linguaggio C++17.
+In questo progetto è stata effettuata l'implementazione dell'algoritmo SHA1-0 tramite il linguaggio C++17.
 La maggior parte delle dipendenze vengono gestite tramite il package manager Conan, per poter la compilazione hai bisogno soltanto 
 di avere un ambiente python, un compilatore C++17 e Cmake.
 
