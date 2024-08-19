@@ -1,6 +1,6 @@
 # Italian: Implementazione Secure Hash Algorithm 0-1
 
-Progetto per il corso di Crittografia presso Unipr.
+Corso di Crittografia presso Unipr.
 
 In questo progetto è stata effettuata la reimplementazione dell'algoritmo SHA1-0 tramite il linguaggio C++17.
 La maggior parte delle dipendenze vengono gestite tramite il package manager Conan, per poter la compilazione hai bisogno soltanto 
