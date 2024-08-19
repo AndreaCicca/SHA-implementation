@@ -1,4 +1,4 @@
-# Italian: Progetto corso Crittografia (Unipr)
+# Italian: Progetto per il corso di Crittografia (Unipr)
 
 In questo progetto è stata effettuata la reimplementazione dell'algoritmo SHA1 tramite il linguaggio C++17.
 La maggior parte delle dipendenze vengono gestite tramite il package manager Conan, per poter la compilazione c'è bisogno soltanto 
