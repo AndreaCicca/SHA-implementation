@@ -120,7 +120,7 @@ TEST(SHA1Test, Performance) {
       std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
         .count();
     cripto::log_trace("SHA1: Performance test completed in " +
-                     std::to_string(duration) + " ms");
+                      std::to_string(duration) + " ms");
 
     EXPECT_LT(duration, 1000);
 }

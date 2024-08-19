@@ -128,3 +128,23 @@
 	\end{center}
 
 \end{frame}
+
+
+
+\begin{frame}[fragile]
+	\frametitle{Rotazione a sinistra}
+	Operazione che ha il compito di \textbf{espandere le parole} all'interno dell'algoritmo.
+	La differenza tra SHA-1 e SHA-0 è una rotazione a sinistra di 1 bit.
+
+	\vspace{1cm}
+
+	\begin{verbatim}
+    return type: integer
+	leftRotate(integer value, integer count) 
+	{
+    return 
+		(value << count) | (value >> (32 - count));
+	}	
+    \end{verbatim}
+
+\end{frame}

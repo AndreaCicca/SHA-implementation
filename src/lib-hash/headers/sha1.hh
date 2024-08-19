@@ -45,7 +45,20 @@ class SHA1 {
      * @note Il buffer è di 64 byte (512 bit) come specificato dallo
      * standard.
      */
-    size_t  bufferLength;
+    size_t bufferLength;
+
+    /**
+     * @brief Numero del blocco da elaborare che ha come scopo quello di
+     * migliorare l'output del logging a livello trace.
+     *
+     * Ogni qual volta che si invoca la funzione transform viene aumentato
+     * questo contatore, queste informaizoni vengono poi successicamente
+     * inserite all'intenro del file di logging prima di mostrare i nuovi valori
+     * dei registri
+     *
+     */
+    uint64_t block_number;
+
     uint8_t buffer[SHA1_BLOCK_SIZE];
 };
 

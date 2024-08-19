@@ -40,8 +40,15 @@ main(int argc, char *argv[]) {
       "abcdefghijklmnopqrstuvwxyz",
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       "1234567890123456789012345678901234567890123456789012345678901234",
-      "Nel mezzo del cammin di nostra vita mi ritrovai per una selva "
-      "oscura"};
+
+      "Nel mezzo del cammin di nostra vita"
+      "mi ritrovai per una selva oscura"
+      "ché la diritta via era smarrita."
+      "Ahi quanto a dir qual era è cosa dura"
+      "esta selva selvaggia e aspra e forte"
+      "che nel pensier rinova la paura!"
+
+    };
 
     for (const auto &test : test_cases)
     {

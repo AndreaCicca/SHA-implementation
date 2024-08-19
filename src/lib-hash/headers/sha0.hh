@@ -32,6 +32,7 @@ class SHA0 {
     uint32_t state[5];
     uint64_t bitCount;
     size_t   bufferLength;
+    uint64_t block_number;
     uint8_t  buffer[SHA0_BLOCK_SIZE];
 };
 
@@ -60,7 +61,7 @@ class SHA0 {
 
 //     Extend the sixteen 32-bit words into eighty 32-bit words:
 //     for i from 16 to 79
-//         w[i] = (w[i-3] xor w[i-8] xor w[i-14] xor w[i-16]) leftrotate 1
+//         w[i] = (w[i-3] xor w[i-8] xor w[i-14] xor w[i-16])
 
 //     Initialize hash value for this chunk:
 //     a = h0

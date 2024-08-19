@@ -49,7 +49,7 @@ leftRotate(uint32_t value, unsigned int count) {
  */
 SHA0::SHA0()
   : state{0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0},
-    bitCount(0), bufferLength(0) {
+    bitCount(0), bufferLength(0), block_number(0) {
 }
 
 /**
@@ -96,7 +96,10 @@ void
 SHA0::transform(const uint8_t block[SHA0_BLOCK_SIZE]) {
     uint32_t w[80];
 
-    // Conversione dei messaggi in 16 parole da 32 bit
+    // Incremento block number
+    ++block_number;
+
+    // Conversione dei blocchi in 16 parole da 32 bit
     // 512 bit = 16 parole da 32 bit
     for (int i = 0; i < 16; ++i)
     {
@@ -111,10 +114,11 @@ SHA0::transform(const uint8_t block[SHA0_BLOCK_SIZE]) {
         w[i] = w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16];
     }
 
-    cripto::log_trace("SHA0: Processing block");
+    std::string block_number_string = std::to_string(block_number);
+    cripto::log_trace("SHA0: Processing block N°: " + block_number_string);
 
     // copio i 5 stati nelle variabili locali
-    // andrò soltanto a modificare queste variabili,
+    // andrò soltanto a modificare gli stati all'interno dei cicli,
     // in questo modo l'output della funzione di hash sarà sempre
     // 5 * 32 bit = 160 bit
     uint32_t a = state[0], b = state[1], c = state[2], d = state[3],
@@ -202,6 +206,8 @@ SHA0::padding() {
         buffer[56 + i] = (bitCount >> ((7 - i) * 8)) & 0xFF;
     }
 
+    cripto::log_trace(
+      "SHA0: Elaborazione blocco finale con padding e lunghezza del messaggio");
     transform(buffer);
 }
 
