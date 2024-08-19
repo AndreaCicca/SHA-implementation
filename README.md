@@ -1,7 +1,9 @@
-# Italian: Progetto per il corso di Crittografia (Unipr)
+# Italian: Implementazione Secure Hash Algorithm 0-1
 
-In questo progetto è stata effettuata la reimplementazione dell'algoritmo SHA1 tramite il linguaggio C++17.
-La maggior parte delle dipendenze vengono gestite tramite il package manager Conan, per poter la compilazione c'è bisogno soltanto 
+Progetto per il corso di Crittografia presso Unipr.
+
+In questo progetto è stata effettuata la reimplementazione dell'algoritmo SHA1-0 tramite il linguaggio C++17.
+La maggior parte delle dipendenze vengono gestite tramite il package manager Conan, per poter la compilazione hai bisogno soltanto 
 di avere un ambiente python, un compilatore C++17 e Cmake.
 
 ## Clonazione locale del progetto ed installazione di Conan
