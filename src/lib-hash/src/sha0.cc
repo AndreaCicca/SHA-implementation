@@ -25,8 +25,7 @@ namespace cripto {
  * @param count numero di posizioni di cui ruotare il ruotare il valore
  * @return uint32_t valore ruotato
  *
- * @note Questa funzione viene utilizzata per l'espansione delle parole e per
- * la rotazione dei registri di stato.
+ * @note Questa funzione viene utilizzata per l'espansione delle parole.
  */
 inline uint32_t
 leftRotate(uint32_t value, unsigned int count) {

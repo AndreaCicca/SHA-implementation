@@ -22,6 +22,13 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief Funzione di test per l'algirmo sha1
+ *
+ * @param message
+ * @param isPrintable
+ * @return std::string
+ */
 std::string
 cripto_test_sha1(const std::string &message, const bool isPrintable = true) {
 
@@ -49,6 +56,13 @@ cripto_test_sha1(const std::string &message, const bool isPrintable = true) {
     return result;
 }
 
+/**
+ * @brief Funzione di test per l'algirmo sha0
+ *
+ * @param message
+ * @param isPrintable
+ * @return std::string
+ */
 std::string
 cripto_test_sha0(const std::string &message, const bool isPrintable = true) {
 
@@ -75,6 +89,13 @@ cripto_test_sha0(const std::string &message, const bool isPrintable = true) {
     return result;
 }
 
+/**
+ * @brief Funzione di test per l'algirmo sha1 tramite la libreria openssl
+ *
+ * @param message
+ * @param isPrintable
+ * @return std::string
+ */
 std::string
 openssl_test_sha1(const std::string &message, const bool isPrintable = true) {
     unsigned char hash[SHA_DIGEST_LENGTH];
@@ -91,6 +112,15 @@ openssl_test_sha1(const std::string &message, const bool isPrintable = true) {
     return hash_string;
 }
 
+/**
+ * @brief Funzione per convertire un file in una stringa
+ *
+ * @note Questa funzione viene utilizzata per testare la funzione di
+ * hash con stringhe molto lunghe che vengono salvate in file .txt
+ *
+ * @param filename
+ * @return std::string
+ */
 std::string
 read_file(const std::string &filename) {
     std::ifstream file(filename);
