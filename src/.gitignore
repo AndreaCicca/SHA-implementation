@@ -4,6 +4,8 @@ CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
+html
+latex
 
 # Ignora i file di output di build e directory temporanee
 *.o
