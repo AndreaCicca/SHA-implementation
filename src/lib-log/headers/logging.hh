@@ -15,56 +15,56 @@ namespace cripto {
 
 /**
  * @brief Inizializzazione del logging tramite la libreria boost
- * 
- * @param trace 
+ *
+ * @param trace
  */
 void
 init_logging(bool trace = false);
 
 /**
  * @brief Stampa del messaggio con la priorità trace
- * 
- * @param message 
+ *
+ * @param message
  */
 void
 log_trace(const std::string &message);
 
 /**
  * @brief Stampa del messaggio con la priorità @a trace
- * 
- * @param message 
+ *
+ * @param message
  */
 void
 log_info(const std::string &message);
 
 /**
  * @brief Stampa del messaggio con la priorità @a info
- * 
- * @param message 
+ *
+ * @param message
  */
 void
 log_error(const std::string &message);
 
 /**
  * @brief Stampa del messaggio con la priorità @a warning
- * 
- * @param message 
+ *
+ * @param message
  */
 void
 log_warning(const std::string &message);
 
 /**
  * @brief Stampa del messaggio con la priorità @a  debug
- * 
- * @param message 
+ *
+ * @param message
  */
 void
 log_debug(const std::string &message);
 
 /**
  * @brief Stampa del messaggio con la priorità @a fatal
- * 
- * @param message 
+ *
+ * @param message
  */
 void
 log_fatal(const std::string &message);

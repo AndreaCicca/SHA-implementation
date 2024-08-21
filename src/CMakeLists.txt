@@ -26,6 +26,7 @@ add_subdirectory(lib-log)
 
 # Aggiungi l'eseguibile principale
 add_executable(${PROJECT_NAME} main.cc)
+add_executable(sha_cli sha_cli.cc)
 add_executable(ut_sha_functions ut_sha_functions.cc)
 
 # Linka le librerie
@@ -34,6 +35,12 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     logging-lib
     openssl::openssl
     boost::boost
+)
+
+target_link_libraries(sha_cli PRIVATE 
+    hash-lib
+    logging-lib
+    openssl::openssl
 )
 
 target_link_libraries(ut_sha_functions PRIVATE 

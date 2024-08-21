@@ -10,7 +10,6 @@
  */
 
 #include "common_hash.hh"
-#include "logging.hh"
 
 int
 main(int argc, char *argv[]) {
