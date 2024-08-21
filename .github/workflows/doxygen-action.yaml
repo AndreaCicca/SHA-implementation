@@ -20,7 +20,7 @@ jobs:
         working-directory: 'src'
         doxyfile-path: 'Doxyfile'
         enable-latex: true
-        additional-packages: texlive-full
+        additional-packages: texlive-full texlive-fontsextra texlive-latex-extra 
         
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
