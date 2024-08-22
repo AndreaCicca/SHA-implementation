@@ -3,17 +3,35 @@
 %------------------------------------------------
 
 \begin{frame}
-	\frametitle{Attacco ad estensione di lunghezza}
+	\frametitle{Attacco ad estensione di lunghezza (1/2)}
+	Se un attaccante conosce l'hash del messaggio \( h(m) \) può calcolare \( h(m || m') \) dove \( m' \) è un \textbf{messaggio arbitrario}.
+	La struttura di Merkle-Damgård permette di riutilizzare l'hash intermedio come se fosse l'IV per calcolare l'hash esteso.
 
-	Se un attaccante conosce l'ash del messaggio \( h(m) \) può calcolare \( h(m || m') \) dove \( m' \) è un \textbf{messaggio arbitrario}.
-	la struttura di Merkle-Damgård permette di riutilizzare l'hash intermedio come se fosse l'IV per calcolare l'hash esteso.
+	\vspace{0.5cm}
+	\begin{itemize}
+		\item Dato \(h = H(m)\), è semplice calcolare \(m'\) e \(h'\), tali che \(h' = H(m||m')\)
+		\item L'attacco si basa sull'uso di \(h\) come hash interno per calcolare \(h'\)
+	\end{itemize}
 
-	\vspace{1cm}
-
+	\vspace{0.5cm}
 	\[
-		H(m \parallel m') = H'(h, m'')
+		H(m) = H'(V_0, m) \text{ dove } V_0 \text{ è l'IV dell'algoritmo } H
 	\]
+\end{frame}
 
+\begin{frame}
+	\frametitle{Attacco ad estensione di lunghezza (2/2)}
+
+	\begin{align*}
+		 & \text{Scegli } m'' \text{ e considera } m' = pad(m)||m''    \\
+		 & h' = H(m||m') = H(m||pad(m)||m'') = H'(V_0, m||pad(m)||m'') \\
+		 & \text{Dalla struttura di Merkle-Damgård:}                   \\
+		 & H'(V_0, m||pad(m)||m'') = H'(H(m), m'') = H'(h, m'')        \\
+		 & H(m||m') = H'(h, m'')
+	\end{align*}
+
+	\vspace{0.5cm}
+	Possiamo calcolare \(h' = H(m||m')\) senza conoscere \(m\).
 \end{frame}
 
 
