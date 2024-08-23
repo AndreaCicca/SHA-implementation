@@ -18,12 +18,10 @@ def calculate_hash():
     except FileNotFoundError:
         messagebox.showerror("Errore", "Eseguibile sha_cli non trovato. Assicurati che sia nella cartella ./build/")
 
-# Creazione della finestra principale
+# Creazione della finestra principale e configurazione del layout
 root = tk.Tk()
 root.title("Calcolatore Hash SHA1")
-root.geometry("1000x600")  # Dimensione iniziale della finestra
-
-# Configurazione del layout
+root.geometry("1000x600")
 root.columnconfigure(0, weight=1)
 root.rowconfigure(1, weight=1)
 
