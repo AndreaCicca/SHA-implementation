@@ -96,9 +96,8 @@
 
 
 \begin{frame}
-	\frametitle{Secure Hash Algorithm: costruzione Merkle-Damgård}
-	Le funzioni di hash come SHA-1, MD5 e SHA-2 sono basate sul costrutto di \textbf{Merkle-Damgård}, essi dimostrarono in modo indipndente
-	che utilizando \textbf{un appropriato schema di padding} e la funzione di compressione è \textbf{resistente alle collisioni}, allora anche la \textbf{funzione di hash è resistente alle collisione}.
+	\frametitle{Secure Hash Algorithm: costrutto Merkle-Damgård}
+	Utilizando \textbf{un appropriato schema di padding} e la funzione di compressione è \textbf{resistente alle collisioni}, allora anche la \textbf{funzione di hash è resistente alle collisione}.
 
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{img/1-img/Merkle-Damgard.png}
@@ -125,12 +124,10 @@
 		% Colonna a sinistra (Elenco)
 		\begin{column}{0.6\textwidth}
 			\begin{itemize}
-				\item \textbf{Elaborazione dei blocchi tramite la funzione F}:
+				\item \textbf{Funzione di compressione}:
 				      \begin{itemize}
-					      \item F si occupa di trasformare 2 input di lunghezza fissa (blocco e stato) in un output di lunghezza fissa.
-					      \item L'algoritmo parte con un vettore di inizializzazione VI di 160 bit.
-					      \item In SHA-1 prima di elaborare il blocco esso viene suddiviso ed espanso in 80 parole da 32 bit.
-				      \end{itemize}
+					      \item F si occupa di trasformare 2 input di lunghezza fissa (blocco e stato) in un output di lunghezza fissa (nuovo stato).
+					      \item L'algoritmo parte con un vettore di inizializzazione VI di 160 bit.				      \end{itemize}
 			\end{itemize}
 		\end{column}
 
