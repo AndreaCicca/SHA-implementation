@@ -1,4 +1,4 @@
-# Italian: Implementazione Secure Hash Algorithm 0-1
+# Italian: Implementazione Secure Hash Algorithm 1 (SHA1)
 
 Corso di Crittografia presso Unipr.
 
