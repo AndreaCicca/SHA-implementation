@@ -7,9 +7,8 @@ task:
     CONAN_USER_HOME: /root/.conan2
 
   cache:
-    conan_cache:
-      folder: /root/.conan2
-      fingerprint_script: cat src/conanfile.txt
+    folder: /root/.conan2
+    fingerprint_script: cat src/conanfile.txt
 
   checkout_script:
     - git clone https://github.com/<tuo-repo>.git .
