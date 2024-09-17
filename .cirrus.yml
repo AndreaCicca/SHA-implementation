@@ -5,15 +5,17 @@ task:
   environment:
     CONAN_USER_HOME: /root/.conan2
 
+  setup_script:
+    # Installa git, Conan, e strumenti di compilazione C++
+    - sudo apt update
+    - sudo apt install -y git python3-pip g++ cmake build-essential
+
+    # Installa Conan
+    - pip3 install conan
+
   checkout_script:
     - git clone https://github.com/AndreaCicca/SHA-implementation .
     - git checkout main
-
-  setup_script:
-    # Installa Conan
-    - sudo apt update
-    - sudo apt install -y python3-pip
-    - pip3 install conan
 
   install_script:
     # Crea il profilo di Conan e directory build
