@@ -23,7 +23,7 @@ task:
     - pip3 install conan
 
   checkout_script:
-    - git clone https://github.com/AndreaCicca/SHA-implementation .
+    - git clone https://github.com/AndreaCicca/SHA-implementation
     - git checkout main
 
   install_script:
