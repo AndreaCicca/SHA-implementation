@@ -5,10 +5,10 @@ task:
   environment:
     CONAN_USER_HOME: /root/.conan2
 
-  # conan_cache:
-  #   folder: $HOME/.conan2  # Percorso della cartella Conan2
-  #   fingerprint_script:
-  #     - cat ./src/conanfile.txt
+  conan_cache:
+    folder: $HOME/.conan2  # Percorso della cartella Conan2
+    fingerprint_script:
+      - cat ./src/conanfile.txt
 
   env:
     DEBIAN_FRONTEND: noninteractive
