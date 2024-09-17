@@ -1,4 +1,5 @@
-name: CMake compilation with Conan
+name: Cmake compilation Conan
+
 on:
   push:
     branches: [ main ]
@@ -7,52 +8,35 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        arch: [x86_64, arm64]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup Conan
-        uses: jwidauer/setup-conan@v1
+    - name: Setup Conan
+      uses: jwidauer/setup-conan@v1
 
-      - name: Cache Conan packages
-        id: cache-conan
-        uses: actions/cache@v3
-        with:
-          path: ~/.conan2
-          key: ${{ runner.os }}-${{ matrix.arch }}-conan2-${{ hashFiles('src/conanfile.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.arch }}-conan2-
+    - name: Cache Conan packages
+      id: cache-conan
+      uses: actions/cache@v3
+      with:
+        path: ~/.conan2
+        key: ${{ runner.os }}-conan2-${{ hashFiles('src/conanfile.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-conan2-
 
-      - name: Create default Conan profile
-        run: conan profile detect --force
+    - name: Create default Conan profile
+      run: conan profile detect --force
 
-      - name: Set up QEMU
-        if: matrix.arch == 'arm64'
-        uses: docker/setup-qemu-action@v1
+    - name: Create build directory
+      run: mkdir -p src/build
 
-      - name: Create build directory
-        run: mkdir -p src/build
+    - name: Install dependencies
+      run: conan install src --output-folder=src/build --build=missing
 
-      - name: Install dependencies
-        run: |
-          if [ "${{ matrix.arch }}" = "arm64" ]; then
-            conan install src --output-folder=src/build --build=missing -s arch=armv8
-          else
-            conan install src --output-folder=src/build --build=missing
-          fi
+    - name: Configure CMake
+      run: cmake -S src -B src/build --preset conan-release
 
-      - name: Configure CMake
-        run: |
-          if [ "${{ matrix.arch }}" = "arm64" ]; then
-            cmake -S src -B src/build --preset conan-release -DCMAKE_SYSTEM_PROCESSOR=aarch64
-          else
-            cmake -S src -B src/build --preset conan-release
-          fi
-
-      - name: Build
-        run: cmake --build src/build
+    - name: Build
+      run: cmake --build src/build
