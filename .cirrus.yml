@@ -1,14 +1,9 @@
 task:
-  name: CMake Compilation Conan
-  instance:
-    image: ubuntu:latest
+  arm_container:
+    image: ubuntu:20.04
 
   environment:
     CONAN_USER_HOME: /root/.conan2
-
-  cache:
-    folder: /root/.conan2
-    fingerprint_script: cat src/conanfile.txt
 
   checkout_script:
     - git clone https://github.com/<tuo-repo>.git .
