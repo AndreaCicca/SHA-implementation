@@ -5,6 +5,15 @@ task:
   environment:
     CONAN_USER_HOME: /root/.conan2
 
+  # conan_cache:
+  #   folder: $HOME/.conan2  # Percorso della cartella Conan2
+  #   fingerprint_script:
+  #     - cat ./src/conanfile.txt
+
+  env:
+    DEBIAN_FRONTEND: noninteractive
+    TZ: Europe/Rome
+
   setup_script:
     # Installa git, Conan, e strumenti di compilazione C++
     - apt update
