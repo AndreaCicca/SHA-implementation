@@ -6,7 +6,7 @@ task:
     CONAN_USER_HOME: /root/.conan2
 
   checkout_script:
-    - git clone https://github.com/<tuo-repo>.git .
+    - git clone https://github.com/AndreaCicca/SHA-implementation .
     - git checkout main
 
   setup_script:
