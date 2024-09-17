@@ -1,0 +1,33 @@
+task:
+  name: CMake Compilation Conan
+  instance:
+    image: ubuntu:latest
+
+  environment:
+    CONAN_USER_HOME: /root/.conan2
+
+  cache:
+    conan_cache:
+      folder: /root/.conan2
+      fingerprint_script: cat src/conanfile.txt
+
+  checkout_script:
+    - git clone https://github.com/<tuo-repo>.git .
+    - git checkout main
+
+  setup_script:
+    # Installa Conan
+    - sudo apt update
+    - sudo apt install -y python3-pip
+    - pip3 install conan
+
+  install_script:
+    # Crea il profilo di Conan e directory build
+    - conan profile detect --force
+    - mkdir -p src/build
+
+  build_script:
+    # Installa le dipendenze con Conan e build con CMake
+    - conan install src --output-folder=src/build --build=missing
+    - cmake -S src -B src/build --preset conan-release
+    - cmake --build src/build
