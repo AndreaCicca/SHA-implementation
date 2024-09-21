@@ -34,9 +34,8 @@ Compilazione del progetto e installazione delle dipendenze:
 cd src &&
 mkdir build &&
 conan install . --output-folder=build --build=missing &&
-cd build &&
-cmake .. --preset conan-release &&
-cmake --build .
+cmake -B build --preset conan-release &&
+cmake --build build
 ```
 
 > [!NOTE]
