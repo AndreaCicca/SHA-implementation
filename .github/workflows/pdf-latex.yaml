@@ -17,9 +17,11 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
+    - name: Move to the directory containing the main.tex file
+      run: cd latex
+
     - name: Pull pdflatex docker image
-      run: |
-        docker pull andreacicca/pdflatex:latest
+      run: docker pull andreacicca/pdflatex:latest
 
     - name: Generate pdf
       run: docker run --rm -v "${PWD}:/root/shared/folder" --name pdflatex andreacicca/pdflatex main.tex
