@@ -1,4 +1,4 @@
-name: Cmake compilation Conan
+name: PDF compilation via Latex
 
 on:
   push:
@@ -14,8 +14,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Cache Docker layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
     - name: Pull pdflatex docker image
-      run: docker pull andreacicca/pdflatex:latest
-    
+      run: |
+        docker pull andreacicca/pdflatex:latest
+
     - name: Generate pdf
       run: docker run -it --rm -v "${PWD}:/root/shared/folder" --name pdflatex andreacicca/pdflatex main.tex
