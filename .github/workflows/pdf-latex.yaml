@@ -30,4 +30,4 @@ jobs:
         docker pull andreacicca/pdflatex:latest
 
     - name: Generate pdf
-      run: docker run -it --rm -v "${PWD}:/root/shared/folder" --name pdflatex andreacicca/pdflatex main.tex
+      run: docker run --rm -v "${PWD}:/root/shared/folder" --name pdflatex andreacicca/pdflatex main.tex
