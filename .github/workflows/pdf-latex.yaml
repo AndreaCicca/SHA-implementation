@@ -1,0 +1,21 @@
+name: Cmake compilation Conan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Pull pdflatex docker image
+      run: docker pull andreacicca/pdflatex:latest
+    
+    - name: Generate pdf
+      run: docker run -it --rm -v "${PWD}:/root/shared/folder" --name pdflatex andreacicca/pdflatex main.tex
