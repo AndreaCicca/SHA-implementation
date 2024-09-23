@@ -1,5 +1,7 @@
 # Italian: Implementazione Secure Hash Algorithm 1 (SHA1)
 
+[![Cmake compilation Conan](https://github.com/AndreaCicca/SHA-implementation/actions/workflows/compilation.yaml/badge.svg)](https://github.com/AndreaCicca/SHA-implementation/actions/workflows/compilation.yaml)
+
 Corso di Crittografia presso Unipr.
 
 In questo progetto è stata effettuata l'implementazione dell'algoritmo SHA 0-1tramite il linguaggio C++17.
