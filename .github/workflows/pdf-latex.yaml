@@ -31,3 +31,9 @@ jobs:
 
     - name: Generate pdf
       run: docker run --rm -v "${PWD}:/root/shared/folder" --name pdflatex andreacicca/pdflatex main.tex
+
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: compiled-pdf
+        path: ./main.pdf
