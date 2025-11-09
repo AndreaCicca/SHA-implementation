@@ -8,7 +8,7 @@ PRESET="conan-release"
 
 conan install . --output-folder="$BUILD_DIR" --build=missing
 
-cmake -B "$BUILD_DIR" --preset "$PRESET"
+cmake --preset "$PRESET"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     NUM_CORES=$(nproc)
@@ -18,4 +18,4 @@ else
     NUM_CORES=1  # Fallback a 1 core in caso di sistema non supportato
 fi
 
-cmake --build build -j$NUM_CORES
+cmake --build --preset "$PRESET" -j$NUM_CORES

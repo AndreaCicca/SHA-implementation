@@ -1,8 +1,11 @@
 [requires]
 boost/1.86.0
-openssl/3.2.2
+openssl/3.6.0
 gtest/1.15.0
 
 [generators]
 CMakeDeps
 CMakeToolchain
+
+[layout]
+cmake_layout
