@@ -36,7 +36,7 @@ jobs:
       run: conan install src --output-folder=src/build --build=missing
 
     - name: Configure CMake
-      run: cmake -S src -B src/build --preset conan-release
+      run: cmake -S src --preset conan-release
 
     - name: Build
-      run: cmake --build src/build
+      run: cmake --build --preset conan-release
