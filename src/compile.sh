@@ -2,13 +2,15 @@
 set -e
 
 BUILD_DIR="build"
-PRESET="conan-release"
+GENERATOR="Ninja"
 
-# mkdir "$BUILD_DIR"
-
+# install dependencies and generate toolchain in $BUILD_DIR
 conan install . --output-folder="$BUILD_DIR" --build=missing
 
-cmake --preset "$PRESET"
+TOOLCHAIN_FILE="$BUILD_DIR/generators/conan_toolchain.cmake"
+
+# Configure with explicit CMake invocation using Ninja and the Conan toolchain
+cmake -S . -B "$BUILD_DIR" -G "$GENERATOR" -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN_FILE" -DCMAKE_BUILD_TYPE=Release
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     NUM_CORES=$(nproc)
@@ -18,4 +20,5 @@ else
     NUM_CORES=1  # Fallback a 1 core in caso di sistema non supportato
 fi
 
-cmake --build --preset "$PRESET" -j$NUM_CORES
+# Build
+cmake --build "$BUILD_DIR" -- -j"$NUM_CORES"
