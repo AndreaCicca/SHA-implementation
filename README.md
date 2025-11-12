@@ -41,4 +41,4 @@ cmake --build build
 ```
 
 > [!NOTE]
-> Per non copia e incollare ogni comando si può usare lo script ./src/compile.sh 
+> Per non copia e incollare i singoli comandi si può usare lo script src/compile.sh
