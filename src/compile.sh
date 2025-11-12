@@ -7,7 +7,7 @@ GENERATOR="Ninja"
 # install dependencies and generate toolchain in $BUILD_DIR
 conan install . --output-folder="$BUILD_DIR" --build=missing
 
-TOOLCHAIN_FILE="$BUILD_DIR/generators/conan_toolchain.cmake"
+TOOLCHAIN_FILE="$BUILD_DIR/Release/generators/conan_toolchain.cmake"
 
 # Configure with explicit CMake invocation using Ninja and the Conan toolchain
 cmake -S . -B "$BUILD_DIR" -G "$GENERATOR" -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN_FILE" -DCMAKE_BUILD_TYPE=Release
