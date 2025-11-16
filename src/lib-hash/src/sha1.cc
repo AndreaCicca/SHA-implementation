@@ -48,7 +48,7 @@ leftRotate(uint32_t value, unsigned int count) {
  */
 SHA1::SHA1()
   : state{0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0},
-    bitCount(0), bufferLength(0), block_number(0) {
+    bitCount(0), bufferLength(0), block_number(0), buffer{} {
 }
 
 /**

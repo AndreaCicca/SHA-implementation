@@ -12,7 +12,7 @@
 #include "common_hash.hh"
 
 int
-main(int argc, char *argv[]) {
+main(int argc, char const *argv[]) {
 
     // Variabile booleana per l'attivazione del logging a livello trace
     bool init_trace = false;
