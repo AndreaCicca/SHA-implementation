@@ -125,6 +125,107 @@ TEST(SHA1Test, Performance) {
     EXPECT_LT(duration, 1000);
 }
 
+//! Test SHA256 con stringa vuota
+TEST(SHA256Test, EmptyString) {
+    std::string message = "";
+    EXPECT_EQ(cripto_test_sha256(message, false),
+              openssl_test_sha256(message, false));
+}
+
+//! Test SHA256 con una stringa breve
+TEST(SHA256Test, ShortString) {
+    std::string message = "Hello, World!";
+    EXPECT_EQ(cripto_test_sha256(message, false),
+              openssl_test_sha256(message, false));
+}
+
+//! Test SHA256 con una stringa più lunga
+TEST(SHA256Test, LongString) {
+    std::string message =
+      "This is a longer string to test SHA256 implementation. "
+      "It should work with various lengths.";
+    EXPECT_EQ(cripto_test_sha256(message, false),
+              openssl_test_sha256(message, false));
+}
+
+//! Test SHA256 con caratteri speciali
+TEST(SHA256Test, SpecialCharacters) {
+    std::string message = "!@#$%^&*()_+{}|:<>?~`-=[]\\;',./";
+    EXPECT_EQ(cripto_test_sha256(message, false),
+              openssl_test_sha256(message, false));
+}
+
+//! Test SHA256 con una stringa contenente caratteri non ASCII
+TEST(SHA256Test, NonASCIICharacters) {
+    std::string message = "こんにちは世界 Здравствуй Κόσμε";
+    EXPECT_EQ(cripto_test_sha256(message, false),
+              openssl_test_sha256(message, false));
+}
+
+//! Test SHA256 con una stringa molto lunga
+TEST(SHA256Test, VeryLongString) {
+    std::string message(1000000, 'a'); // Stringa di un milione di 'a'
+    EXPECT_EQ(cripto_test_sha256(message, false),
+              openssl_test_sha256(message, false));
+}
+
+//! Generazione causale di stringhe per SHA256
+TEST(SHA256Test, RandomString) {
+    for (int k = 0; k < 100; ++k)
+    {
+        std::string random_message = "";
+        for (int i = 0; i < 100; ++i)
+        {
+            random_message += generaStringaCasuale(100);
+        }
+        EXPECT_EQ(cripto_test_sha256(random_message, false),
+                  openssl_test_sha256(random_message, false));
+    }
+}
+
+//! Test determinismo SHA256 con la stessa stringa
+TEST(SHA256Test, Determinism) {
+    std::string message = "Hello, World!";
+    auto        digest  = cripto_test_sha256(message, false);
+
+    for (int i = 0; i < 10; ++i)
+    {
+        EXPECT_EQ(digest, cripto_test_sha256(message, false));
+        EXPECT_EQ(digest, openssl_test_sha256(message, false));
+    }
+}
+
+//! Test effetto a valanga SHA256
+TEST(SHA256Test, AvalancheEffect) {
+    std::string message = "Hello, World!";
+    auto        digest  = cripto_test_sha256(message, false);
+
+    for (size_t i = 0; i < message.size(); ++i)
+    {
+        std::string modified_message = message;
+        modified_message[i]          = 'a';
+        EXPECT_NE(digest, cripto_test_sha256(modified_message, false));
+        EXPECT_NE(digest, openssl_test_sha256(modified_message, false));
+    }
+}
+
+//! Performance SHA256
+TEST(SHA256Test, Performance) {
+    std::string message(1000000, 'a'); // Stringa di un milione di 'a'
+
+    auto start = std::chrono::high_resolution_clock::now();
+    cripto_test_sha256(message, false);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto duration =
+      std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+        .count();
+    cripto::log_trace("SHA256: Performance test completed in " +
+                      std::to_string(duration) + " ms");
+
+    EXPECT_LT(duration, 1000);
+}
+
 int
 main(int argc, char **argv) {
     cripto::init_logging();

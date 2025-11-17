@@ -25,6 +25,8 @@ main() {
 
     (void)cripto_test_sha1(input_string);
     (void)openssl_test_sha1(input_string);
+    (void)cripto_test_sha256(input_string);
+    (void)openssl_test_sha256(input_string);
 
     return 0;
 }
