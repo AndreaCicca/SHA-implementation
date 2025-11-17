@@ -13,6 +13,7 @@
 #include "logging.hh"
 #include "sha0.hh"
 #include "sha1.hh"
+#include "sha256.hh"
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -108,6 +109,63 @@ openssl_test_sha1(const std::string &message, const bool isPrintable = true) {
     {
         std::cout << "OpenSSL SHA1: " << hash_string << std::endl;
         cripto::log_trace("OpenSSL SHA1: " + hash_string);
+    }
+    return hash_string;
+}
+
+/**
+ * @brief Funzione di test per l'algoritmo sha256
+ *
+ * @param message
+ * @param isPrintable
+ * @return std::string
+ */
+std::string
+cripto_test_sha256(const std::string &message, const bool isPrintable = true) {
+
+    uint8_t digest[cripto::SHA256_DIGEST_SIZE];
+
+    cripto::SHA256 sha256;
+
+    // Eseguo la prima parte dell'hash e converto la stringa in un array di
+    // byte
+    sha256.initialization(reinterpret_cast<const uint8_t *>(message.data()),
+                          message.length());
+
+    // Eseguo la seconda parte dell'hash ed estraggo il digest a 256 bit
+    sha256.final(digest);
+
+    // Converto il digest in una stringa esadecimale
+    std::string result =
+      cripto::SHA256::toHexString(digest, cripto::SHA256_DIGEST_SIZE);
+    if (isPrintable)
+    {
+        std::cout << "Cripto  SHA256: " << result << std::endl;
+        cripto::log_trace("Cripto  SHA256: " + result);
+    }
+
+    return result;
+}
+
+/**
+ * @brief Funzione di test per l'algoritmo sha256 tramite la libreria openssl
+ *
+ * @param message
+ * @param isPrintable
+ * @return std::string
+ */
+std::string
+openssl_test_sha256(const std::string &message, const bool isPrintable = true) {
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    SHA256(reinterpret_cast<const unsigned char *>(message.data()),
+           message.length(), hash);
+
+    std::string hash_string =
+      cripto::SHA256::toHexString(hash, SHA256_DIGEST_LENGTH);
+    if (isPrintable)
+    {
+        std::cout << "OpenSSL SHA256: " << hash_string << std::endl;
+        cripto::log_trace("OpenSSL SHA256: " + hash_string);
     }
     return hash_string;
 }
