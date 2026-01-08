@@ -5,7 +5,7 @@ set -e
 # Nella cartella ./build avviare tutti gli eseguibili che iniziano con ut_
 
 BUILD_DIR="build"
-BUILD_TYPE="${1:-Release}"  # Default a Release se non specificato
+BUILD_TYPE="${1:-Release}"  # Default to Release if not specified
 
 # Cerca gli eseguibili di test nelle diverse possibili locazioni
 TEST_LOCATIONS=(
