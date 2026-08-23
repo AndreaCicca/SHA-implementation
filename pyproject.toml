@@ -1,0 +1,19 @@
+[project]
+name = "sha-implementation"
+version = "0.1.0"
+description = "Implementazione Secure Hash Algorithm"
+readme = "README.md"
+authors = [
+    { name = "Andrea Ciccarello", email = "58073848+AndreaCicca@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "conan>=2.31.2",
+]
+
+[project.scripts]
+sha-implementation = "sha_implementation:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
